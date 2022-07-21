@@ -8,6 +8,8 @@ const app : express.Application = express();
 const port : string = process.env.PORT;
 const mongodb_uri : string = process.env.MONGODB_URI;
 
+console.log(`lior's branch`);
+
 if(mongodb_uri) {
     mongoose
         .connect(mongodb_uri)
