@@ -1,10 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-
-dotenv.config();
+import http from 'http';
+import { Server } from 'socket.io';
 
 const app : express.Application = express();
+const server = http.createServer(app);
+const io = new Server (server)
+
+dotenv.config();
 const port : string = process.env.PORT;
 const mongodb_uri : string = process.env.MONGODB_URI;
 
@@ -17,9 +21,20 @@ if(mongodb_uri) {
     console.log("Couldn't find mongodb_uri");
 }
 
+let counter : number = 1;
+
+io.on("connection", (socket) => {
+    console.log(`user_${counter} connected`);
+    counter++;
+    socket.on("disconnect", () => {
+        counter--;
+        console.log(`user_${counter} disconnected`);
+    });
+})
+
 app.use(express.json());
 app.use(express.static("public"));
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Server is running http://localhost:${port}`);
 })
