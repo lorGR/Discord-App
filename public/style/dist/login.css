@@ -34,21 +34,22 @@ body .hero .container .app {
 }
 body .hero .container .app img {
   cursor: pointer;
-  width: 50%;
+  width: 20%;
   border: 2px solid #6666f8;
   border-radius: 50%;
   transition: all 0.35s ease-in-out;
 }
 body .hero .container .app img:hover {
-  width: 55%;
   background-color: #2b2bc6;
 }
 body .hero .container .app .login-form {
-  border: 2px solid white;
+  border: 2px solid #6666f8;
+  border-radius: 1em;
   width: 50%;
   max-width: 60%;
   text-align: center;
   padding: 2em;
+  background-color: #2c3248;
 }
 body .hero .container .app .login-form form {
   display: flex;
@@ -57,6 +58,7 @@ body .hero .container .app .login-form form {
 }
 body .hero .container .app .login-form form h1 {
   color: #fff;
+  margin: 0;
   text-transform: uppercase;
 }
 body .hero .container .app .login-form form .custome-label {
@@ -69,9 +71,33 @@ body .hero .container .app .login-form form .custome-label {
   gap: 0.5em;
   color: #fff;
 }
+body .hero .container .app .login-form form .custome-label label {
+  width: 100%;
+  text-align: left;
+}
 body .hero .container .app .login-form form .custome-label input {
   width: 100%;
   background-color: inherit;
   border: none;
-  border-bottom: 1px solid #2b2bc6;
+  border-bottom: 1px solid #fbfbfb;
+  color: #fff;
+}
+body .hero .container .app .login-form form .custome-label input:focus {
+  outline: none;
+}
+body .hero .container .app .login-form form button {
+  cursor: pointer;
+  background-color: #474867;
+  border: none;
+  color: #fff;
+  width: 50%;
+  margin: 0 auto;
+  padding: 1em;
+  border-radius: 1em;
+  font-size: 1rem;
+  transition: all 0.35s ease-in-out;
+}
+body .hero .container .app .login-form form button:hover {
+  background-color: #31324d;
+  width: 55%;
 }

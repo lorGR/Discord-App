@@ -15,10 +15,12 @@ body {
     background-color: #5050cb;
     display: grid;
     place-items: center;
+
     .hero {
         .container {
             width: 80%;
             margin: 0 auto;
+
             .app {
                 width: 100%;
                 margin: 6em 25em;
@@ -30,31 +32,38 @@ body {
                 flex-direction: column;
                 align-items: center;
                 gap: 5em;
+
                 img {
                     cursor: pointer;
-                    width: 50%;
+                    width: 20%;
                     border: 2px solid #6666f8;
                     border-radius: 50%;
                     transition: all 0.35s ease-in-out;
                 }
+
                 img:hover {
-                    width: 55%;
                     background-color: #2b2bc6;
                 }
+
                 .login-form {
-                    border: 2px solid white;
+                    border: 2px solid #6666f8;
+                    border-radius: 1em;
                     width: 50%;
                     max-width: 60%;
                     text-align: center;
                     padding: 2em;
+                    background-color: #2c3248;
                     form {
                         display: flex;
                         flex-direction: column;
                         gap: 1em;
+
                         h1 {
                             color: #fff;
+                            margin: 0;
                             text-transform: uppercase;
                         }
+
                         .custome-label {
                             background-color: #474867;
                             border-radius: 1em;
@@ -64,15 +73,41 @@ body {
                             align-items: flex-start;
                             gap: .5em;
                             color: #fff;
-                            label {
 
+                            label {
+                                width: 100%;
+                                text-align: left;
                             }
+
                             input {
                                 width: 100%;
                                 background-color: inherit;
                                 border: none;
-                                border-bottom: 1px solid #2b2bc6;
+                                border-bottom: 1px solid #fbfbfb;
+                                color: #fff;
                             }
+
+                            input:focus {
+                                outline: none;
+                            }
+                        }
+
+                        button {
+                            cursor: pointer;
+                            background-color: #474867;
+                            border: none;
+                            color: #fff;
+                            width: 50%;
+                            margin: 0 auto;
+                            padding: 1em;
+                            border-radius: 1em;
+                            font-size: 1rem;
+                            transition: all 0.35s ease-in-out;
+                        }
+
+                        button:hover {
+                            background-color: #31324d;
+                            width: 55%;
                         }
                     }
                 }
@@ -80,5 +115,3 @@ body {
         }
     }
 }
-
-
