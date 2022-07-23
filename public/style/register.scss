@@ -47,7 +47,7 @@ body {
 
                 .login-form {
                     border-radius: 1em;
-                    width: 50%;
+                    width: 80%;
                     max-width: 60%;
                     text-align: center;
                     padding: 2em;
@@ -61,6 +61,11 @@ body {
                             color: #fff;
                             margin: 0;
                             text-transform: uppercase;
+                        }
+
+                        .row {
+                            display: flex;
+                            gap: 1em;
                         }
 
                         .custome-label {

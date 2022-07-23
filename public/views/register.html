@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord - Login</title>
+    <link rel="stylesheet" href="../style/dist/register.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="app">
+                <img id="logo" src="../assets/discord-logo.png" alt="logo">
+                <div class="login-form">
+                    <form>
+                        <h1>Register</h1>
+                        <div class="row">
+                            <div class="custome-label">
+                                <label for="registerEmail">Email:</label>
+                                <input type="email" id="registerEmail">
+                            </div>
+                            <div class="custome-label">
+                                <label for="registerUsername">Username:</label>
+                                <input type="email" id="registerUsername">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="custome-label">
+                                <label for="registerPassword">Password:</label>
+                                <input type="password" id="registerPassword">
+                            </div>
+                            <div class="custome-label">
+                                <label for="registerRePassword">Verify Password:</label>
+                                <input type="password" id="registerRePassword">
+                            </div>
+                        </div>
+                        <button>Register</button>
+                        <p>Already a member? <a onclick="handleLoginPage()">login now!</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/dist/register.js"></script>
+</body>
+
+</html>
