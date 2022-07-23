@@ -38,9 +38,10 @@ body .hero .container .app img {
   border: 2px solid #6666f8;
   border-radius: 50%;
   transition: all 0.35s ease-in-out;
+  background-color: #2c3248;
 }
 body .hero .container .app img:hover {
-  background-color: #2b2bc6;
+  background-color: #fff;
 }
 body .hero .container .app .login-form {
   border-radius: 1em;
@@ -70,6 +71,7 @@ body .hero .container .app .login-form form .custome-label {
   align-items: flex-start;
   gap: 0.5em;
   color: #fff;
+  transition: border 0.25s ease-in-out;
 }
 body .hero .container .app .login-form form .custome-label label {
   width: 100%;
@@ -91,7 +93,7 @@ body .hero .container .app .login-form form .custome-label:focus-within {
 body .hero .container .app .login-form form button {
   cursor: pointer;
   background-color: #474867;
-  border: none;
+  border: 2px solid #474867;
   color: #fff;
   width: 50%;
   margin: 0 auto;
@@ -102,6 +104,7 @@ body .hero .container .app .login-form form button {
 }
 body .hero .container .app .login-form form button:hover {
   background-color: #5a5b74;
+  border: 2px solid #6666f8;
   width: 55%;
 }
 body .hero .container .app .login-form form p {
