@@ -33,7 +33,7 @@ body .hero .container .app {
   align-items: center;
   gap: 1em;
 }
-body .hero .container .app img {
+body .hero .container .app #logo {
   cursor: pointer;
   width: 20%;
   border: 2px solid #6666f8;
@@ -41,7 +41,7 @@ body .hero .container .app img {
   transition: all 0.35s ease-in-out;
   background-color: #2c3248;
 }
-body .hero .container .app img:hover {
+body .hero .container .app #logo:hover {
   background-color: #fff;
 }
 body .hero .container .app .login-form {
@@ -66,6 +66,7 @@ body .hero .container .app .login-form form .row {
   gap: 1em;
 }
 body .hero .container .app .login-form form .custome-label {
+  position: relative;
   background-color: #474867;
   border: 2px solid #474867;
   border-radius: 1em;
@@ -91,6 +92,10 @@ body .hero .container .app .login-form form .custome-label input {
 }
 body .hero .container .app .login-form form .custome-label input:focus {
   outline: none;
+}
+body .hero .container .app .login-form form .custome-label .label-icon {
+  position: absolute;
+  width: 1.25rem;
 }
 body .hero .container .app .login-form form .custome-label:focus-within {
   border: 2px solid #6666f8;

@@ -34,7 +34,7 @@ body {
                 align-items: center;
                 gap: 1em;
 
-                img {
+                #logo {
                     cursor: pointer;
                     width: 20%;
                     border: 2px solid #6666f8;
@@ -43,7 +43,7 @@ body {
                     background-color: #2c3248;
                 }
 
-                img:hover {
+                #logo:hover {
                     background-color: #fff;
                 }
 
@@ -70,6 +70,7 @@ body {
                         }
 
                         .custome-label {
+                            position: relative;
                             background-color: #474867;
                             border: 2px solid #474867;
                             border-radius: 1em;
@@ -97,6 +98,10 @@ body {
 
                             input:focus {
                                 outline: none;
+                            }
+                            .label-icon {
+                                position: absolute;
+                                width: 1.25rem;
                             }
                         }
 
