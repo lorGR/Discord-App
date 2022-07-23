@@ -1,4 +1,14 @@
-console.log("Connected");
+let degs : number = 360;
+function turn360() {
+    try {
+        const logo = document.getElementById("logo") as HTMLImageElement;
+        logo.style.transform = `rotate(${degs}deg)`;
+        degs += 360;
+    } catch (error) {
+        console.error(error);
+    }
+}
 
-//@ts-ignore
-const socket = io();
+function handleConnect() {
+    window.location.href = "./views/login.html";
+}

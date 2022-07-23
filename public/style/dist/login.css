@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+img {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #5050cb;
+  display: grid;
+  place-items: center;
+}
+body .hero .container {
+  width: 80%;
+  margin: 0 auto;
+}
+body .hero .container .app {
+  width: 100%;
+  margin: 6em 25em;
+  padding: 2em 0;
+  border: 2px solid #6666f8;
+  border-radius: 1em;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5em;
+}
+body .hero .container .app img {
+  cursor: pointer;
+  width: 50%;
+  border: 2px solid #6666f8;
+  border-radius: 50%;
+  transition: all 0.35s ease-in-out;
+}
+body .hero .container .app img:hover {
+  width: 55%;
+  background-color: #2b2bc6;
+}
+body .hero .container .app .login-form {
+  border: 2px solid white;
+  width: 50%;
+  max-width: 60%;
+  text-align: center;
+  padding: 2em;
+}
+body .hero .container .app .login-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+body .hero .container .app .login-form form h1 {
+  color: #fff;
+  text-transform: uppercase;
+}
+body .hero .container .app .login-form form .custome-label {
+  background-color: #474867;
+  border-radius: 1em;
+  padding: 0.75em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+  color: #fff;
+}
+body .hero .container .app .login-form form .custome-label input {
+  width: 100%;
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid #2b2bc6;
+}

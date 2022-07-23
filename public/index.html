@@ -5,9 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Discord</title>
+    <link rel="stylesheet" href="./style/dist/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <img src="./assets/discord-logo.png" alt="logo">
+    <div class="hero">
+        <div class="container">
+            <div class="app">
+                <img onclick="turn360()" id="logo" src="./assets/discord-logo.png" alt="logo">
+                <button onclick="handleConnect()">Connect Now</button>
+            </div>
+        </div>
+    </div>
     <script src="./scripts/dist/index.js"></script>
 </body>
 </html>
