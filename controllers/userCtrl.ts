@@ -14,11 +14,13 @@ export async function register(req: express.Request, res: express.Response) {
         const { error } = UserValidation.validate({ email, username, password, repeatPassword: rePassword });
         if(error) throw error;
 
-        
+        const salt = bcrypt.genSaltSync(saltRounds);
+        const hash = bcrypt.hashSync(password, salt);
 
-        const userDB = new UserModel({ email, username, password, userTag});
+        const userDB = new UserModel({ email, username, password: hash, userTag});
         userTag++;
         await userDB.save();
+        
         if(userDB) {
             res.send({ register: true, userDB });
         } else {

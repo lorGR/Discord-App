@@ -109,7 +109,6 @@ function handleRegister(event) {
         });
     });
 }
-// IMPORTENT!!!!!!!!!!!!!! - CHECK WHAT ERROR GET WHEN SOMEONE IS USEING SPACE IN PASSWORD!!!!!!!!!!!!
 function handleErrorsRegister(error) {
     try {
         if (error.includes("E11000"))
@@ -132,6 +131,8 @@ function handleErrorsRegister(error) {
             errorContainer.innerHTML = "Password should contain at least 1 upper case letter";
         if (error.includes('"password" should contain at least 1 numeric character'))
             errorContainer.innerHTML = "Password should contain at least 1 numeric";
+        if (error.includes('"password" should not contain white spaces'))
+            errorContainer.innerHTML = "Password can't contain spaces";
         if (error.includes('"repeatPassword" must be [ref:password]'))
             errorContainer.innerHTML = "Password doesn't match";
     }
