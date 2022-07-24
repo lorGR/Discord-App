@@ -6,7 +6,6 @@ let userTag = 1000;
 export async function register(req: express.Request, res: express.Response) {
     try {
         const { email, username, password, rePassword } = req.body;
-        console.log(req.body);
         if (!email || !username || !password || !rePassword) throw new Error("All fields must be filled");
 
         const { error } = UserValidation.validate({ email, username, password, repeatPassword: rePassword });

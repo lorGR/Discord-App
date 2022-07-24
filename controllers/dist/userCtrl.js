@@ -47,7 +47,6 @@ function register(req, res) {
                 case 0:
                     _b.trys.push([0, 2, , 3]);
                     _a = req.body, email = _a.email, username = _a.username, password = _a.password, rePassword = _a.rePassword;
-                    console.log(req.body);
                     if (!email || !username || !password || !rePassword)
                         throw new Error("All fields must be filled");
                     error = userModel_1.UserValidation.validate({ email: email, username: username, password: password, repeatPassword: rePassword }).error;
