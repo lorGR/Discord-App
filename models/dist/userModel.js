@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+exports.UserValidation = void 0;
 var mongoose_1 = require("mongoose");
 var joi_1 = require("joi");
 var joi_password_1 = require("joi-password");
@@ -29,8 +30,9 @@ var UserSchema = new mongoose_1["default"].Schema({
 });
 var UserModel = mongoose_1["default"].model("users", UserSchema);
 exports["default"] = UserModel;
-var UserValidation = joi_1["default"].object({
+exports.UserValidation = joi_1["default"].object({
     email: joi_1["default"].string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
     username: joi_1["default"].string().alphanum().min(3).max(16).required(),
-    password: joiPassword.string().minOfSpecialCharacters(1).minOfLowerCase(1).minOfUpperCase(1).minOfNumric(1).noWhiteSpaces().min(6).max(16).required()
+    password: joiPassword.string().minOfSpecialCharacters(1).minOfLowerCase(1).minOfUpperCase(1).minOfNumric(1).noWhiteSpaces().min(6).max(16).required(),
+    repeatPassword: joi_1["default"].ref('password')
 });
