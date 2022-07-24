@@ -35,6 +35,9 @@ io.on("connection", (socket) => {
 app.use(express.json());
 app.use(express.static("public"));
 
+import userRoutes from './routes/userRoutes';
+app.use("/users", userRoutes)
+
 server.listen(port, () => {
     console.log(`Server is running http://localhost:${port}`);
 })

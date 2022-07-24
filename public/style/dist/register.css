@@ -52,22 +52,25 @@ body .hero .container .app .login-form {
   width: 70%;
   max-width: 80%;
 }
-body .hero .container .app .login-form form {
+body .hero .container .app .login-form .registerForm {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 1em;
 }
-body .hero .container .app .login-form form h1 {
+body .hero .container .app .login-form .registerForm h1 {
   color: #fff;
   margin: 0;
   text-transform: uppercase;
 }
-body .hero .container .app .login-form form .row {
+body .hero .container .app .login-form .registerForm .row {
   display: flex;
   gap: 1em;
   width: 100%;
+  justify-content: center;
 }
-body .hero .container .app .login-form form .custome-label {
+body .hero .container .app .login-form .registerForm .custome-label {
   position: relative;
   background-color: #474867;
   border: 2px solid #474867;
@@ -81,31 +84,31 @@ body .hero .container .app .login-form form .custome-label {
   color: #fff;
   transition: border 0.25s ease-in-out;
 }
-body .hero .container .app .login-form form .custome-label label {
+body .hero .container .app .login-form .registerForm .custome-label label {
   width: 100%;
   text-align: left;
 }
-body .hero .container .app .login-form form .custome-label input {
+body .hero .container .app .login-form .registerForm .custome-label input {
   width: 100%;
   background-color: inherit;
   border: none;
   border-bottom: 1px solid #fbfbfb;
   color: #fff;
 }
-body .hero .container .app .login-form form .custome-label input:focus {
+body .hero .container .app .login-form .registerForm .custome-label input:focus {
   outline: none;
 }
-body .hero .container .app .login-form form .custome-label .label-icon {
+body .hero .container .app .login-form .registerForm .custome-label .label-icon {
   position: absolute;
   width: 1.25rem;
 }
-body .hero .container .app .login-form form .custome-label .clickable-icon {
+body .hero .container .app .login-form .registerForm .custome-label .clickable-icon {
   cursor: pointer;
 }
-body .hero .container .app .login-form form .custome-label:focus-within {
+body .hero .container .app .login-form .registerForm .custome-label:focus-within {
   border: 2px solid #6666f8;
 }
-body .hero .container .app .login-form form button {
+body .hero .container .app .login-form .registerForm button {
   cursor: pointer;
   background-color: #474867;
   border: 2px solid #474867;
@@ -117,20 +120,20 @@ body .hero .container .app .login-form form button {
   font-size: 1rem;
   transition: all 0.35s ease-in-out;
 }
-body .hero .container .app .login-form form button:hover {
+body .hero .container .app .login-form .registerForm button:hover {
   background-color: #5a5b74;
   border: 2px solid #6666f8;
   width: 55%;
 }
-body .hero .container .app .login-form form p {
+body .hero .container .app .login-form .registerForm p {
   color: #fff;
 }
-body .hero .container .app .login-form form a {
+body .hero .container .app .login-form .registerForm a {
   cursor: pointer;
   text-decoration: underline;
   color: #6666f8;
   transition: all 0.35s ease-in-out;
 }
-body .hero .container .app .login-form form a:hover {
+body .hero .container .app .login-form .registerForm a:hover {
   color: #5050cb;
 }

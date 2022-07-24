@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,74 +35,46 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-function handleLoginPage() {
-    try {
-        window.location.href = "./login.html";
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-function handleVisible() {
-    try {
-        var input = document.getElementById("registerPassword");
-        var icon = document.getElementById("passwordIcon");
-        if (input.type === "password") {
-            input.type = "text";
-            icon.src = "../assets/svgs/eye-svgrepo-com.svg";
-        }
-        else if (input.type === "text") {
-            input.type = "password";
-            icon.src = "../assets/svgs/password-svgrepo-com.svg";
-        }
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-function handleVisibleReIcon() {
-    try {
-        var input = document.getElementById("registerRePassword");
-        var icon = document.getElementById("rePasswordIcon");
-        if (input.type === "password") {
-            input.type = "text";
-            icon.src = "../assets/svgs/eye-svgrepo-com.svg";
-        }
-        else if (input.type === "text") {
-            input.type = "password";
-            icon.src = "../assets/svgs/password-svgrepo-com.svg";
-        }
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-function handleRegister(event) {
+exports.__esModule = true;
+exports.register = void 0;
+var userModel_1 = require("../models/userModel");
+var userTag = 1000;
+function register(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var email, username, password, rePassword, data, error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var _a, email, username, password, rePassword, _b, error, value, userDB, error_1;
+        return __generator(this, function (_c) {
+            switch (_c.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    event.preventDefault();
-                    email = event.target.email.value;
-                    username = event.target.username.value;
-                    password = event.target.password.value;
-                    rePassword = event.target.rePassword.value;
-                    console.log("from handleRegister");
-                    return [4 /*yield*/, axios.post('/users/register', { email: email, username: username, password: password, rePassword: rePassword })];
+                    _c.trys.push([0, 2, , 3]);
+                    console.log("hero is working");
+                    _a = req.body, email = _a.email, username = _a.username, password = _a.password, rePassword = _a.rePassword;
+                    console.log(req.body);
+                    if (!email || !username || !password || !rePassword)
+                        throw new Error("All fields must be filled");
+                    console.log("Register");
+                    _b = userModel_1.UserValidation.validate({ email: email, username: username, password: password, repeatPassword: rePassword }), error = _b.error, value = _b.value;
+                    console.log(value);
+                    if (error)
+                        throw error;
+                    userDB = new userModel_1["default"]({ email: email, username: username, password: password, repeatPassword: rePassword, userTag: userTag });
+                    userTag++;
+                    return [4 /*yield*/, userDB.save()];
                 case 1:
-                    data = (_a.sent()).data;
-                    if (!data)
-                        throw new Error("Couldn't recieve data from axios POST: '/users/register' ");
-                    console.log(data);
+                    _c.sent();
+                    if (userDB) {
+                        res.send({ register: true, userDB: userDB });
+                    }
+                    else {
+                        res.send({ register: false });
+                    }
                     return [3 /*break*/, 3];
                 case 2:
-                    error_1 = _a.sent();
-                    console.error(error_1);
+                    error_1 = _c.sent();
+                    res.send({ error: error_1.message });
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
         });
     });
 }
+exports.register = register;

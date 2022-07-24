@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
 </head>
 
 <body>
@@ -19,29 +20,29 @@
             <div class="app">
                 <img onclick="turn360()" id="logo" src="../assets/images/discord-logo.png" alt="logo">
                 <div class="login-form">
-                    <form>
+                    <form class="registerForm" onsubmit="handleRegister(event)">
                         <h1>Register</h1>
                         <div class="row">
                             <div class="custome-label">
                                 <label for="registerEmail">Email:</label>
-                                <input type="email" id="registerEmail">
+                                <input type="email" name="email" id="registerEmail">
                                 <img class="label-icon" src="../assets/svgs/email-svgrepo-com.svg" alt="email icon">
                             </div>
                             <div class="custome-label">
                                 <label for="registerUsername">Username:</label>
-                                <input type="text" id="registerUsername">
+                                <input type="text" name="username" id="registerUsername">
                                 <img class="label-icon" src="../assets/svgs/user-svgrepo-com-2.svg" alt="username icon">
                             </div>
                         </div>
                         <div class="row">
                             <div class="custome-label">
                                 <label for="registerPassword">Password:</label>
-                                <input type="password" id="registerPassword">
+                                <input type="password" name="password" id="registerPassword">
                                 <img onclick="handleVisible()" class="label-icon clickable-icon" id="passwordIcon" src="../assets/svgs/password-svgrepo-com.svg" alt="password icon">
                             </div>
                             <div class="custome-label">
                                 <label for="registerRePassword">Repeat Password:</label>
-                                <input type="password" id="registerRePassword">
+                                <input type="password" name="rePassword" id="registerRePassword">
                                 <img onclick="handleVisibleReIcon()" class="label-icon clickable-icon" id="rePasswordIcon" src="../assets/svgs/password-svgrepo-com.svg" alt="password icon">
                             </div>
                         </div>
