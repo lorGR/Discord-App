@@ -18,10 +18,6 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    repeatPassword: {
-        type: String,
-        required: true
-    },
     userTag: {
         type: Number,
         required: true

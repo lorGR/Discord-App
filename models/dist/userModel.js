@@ -19,10 +19,6 @@ var UserSchema = new mongoose_1["default"].Schema({
         type: String,
         require: true
     },
-    repeatPassword: {
-        type: String,
-        required: true
-    },
     userTag: {
         type: Number,
         required: true

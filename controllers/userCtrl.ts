@@ -5,18 +5,14 @@ let userTag = 1000;
 
 export async function register(req: express.Request, res: express.Response) {
     try {
-        console.log("hero is working");
         const { email, username, password, rePassword } = req.body;
         console.log(req.body);
         if (!email || !username || !password || !rePassword) throw new Error("All fields must be filled");
 
-        console.log("Register");
-
-        const { error , value} = UserValidation.validate({ email, username, password, repeatPassword: rePassword });
-        console.log(value);
+        const { error } = UserValidation.validate({ email, username, password, repeatPassword: rePassword });
         if(error) throw error;
 
-        const userDB = new UserModel({ email, username, password, repeatPassword: rePassword, userTag});
+        const userDB = new UserModel({ email, username, password, userTag});
         userTag++;
         await userDB.save();
         if(userDB) {

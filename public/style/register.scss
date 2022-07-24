@@ -65,7 +65,9 @@ body {
                             margin: 0;
                             text-transform: uppercase;
                         }
-
+                        #errorContainer {
+                            color: red;
+                        }
                         .row {
                             display: flex;
                             gap: 1em;

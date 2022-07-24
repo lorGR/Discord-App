@@ -76,9 +76,10 @@ function handleVisibleReIcon() {
         console.error(error);
     }
 }
+var errorContainer = document.getElementById("errorContainer");
 function handleRegister(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var email, username, password, rePassword, data, error_1;
+        var email, username, password, rePassword, data, register, userDB, error, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -88,12 +89,16 @@ function handleRegister(event) {
                     username = event.target.username.value;
                     password = event.target.password.value;
                     rePassword = event.target.rePassword.value;
+                    errorContainer.innerHTML = "";
                     return [4 /*yield*/, axios.post('/users/register', { email: email, username: username, password: password, rePassword: rePassword })];
                 case 1:
                     data = (_a.sent()).data;
                     if (!data)
                         throw new Error("Couldn't recieve data from axios POST: '/users/register' ");
                     console.log(data);
+                    register = data.register, userDB = data.userDB, error = data.error;
+                    if (error)
+                        handleErrorsRegister(error);
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
@@ -103,4 +108,15 @@ function handleRegister(event) {
             }
         });
     });
+}
+function handleErrorsRegister(error) {
+    try {
+        if (error.includes("E11000"))
+            errorContainer.innerHTML = "Email is already is use";
+        if (error.includes('"email" must be a valid email'))
+            errorContainer.innerHTML = "Email is not valid - [.com / .net]";
+    }
+    catch (error) {
+        console.error(error);
+    }
 }

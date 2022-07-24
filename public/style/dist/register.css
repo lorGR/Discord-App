@@ -64,6 +64,9 @@ body .hero .container .app .login-form .registerForm h1 {
   margin: 0;
   text-transform: uppercase;
 }
+body .hero .container .app .login-form .registerForm #errorContainer {
+  color: red;
+}
 body .hero .container .app .login-form .registerForm .row {
   display: flex;
   gap: 1em;

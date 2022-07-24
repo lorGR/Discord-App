@@ -41,26 +41,23 @@ var userModel_1 = require("../models/userModel");
 var userTag = 1000;
 function register(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, email, username, password, rePassword, _b, error, value, userDB, error_1;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
+        var _a, email, username, password, rePassword, error, userDB, error_1;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
-                    _c.trys.push([0, 2, , 3]);
-                    console.log("hero is working");
+                    _b.trys.push([0, 2, , 3]);
                     _a = req.body, email = _a.email, username = _a.username, password = _a.password, rePassword = _a.rePassword;
                     console.log(req.body);
                     if (!email || !username || !password || !rePassword)
                         throw new Error("All fields must be filled");
-                    console.log("Register");
-                    _b = userModel_1.UserValidation.validate({ email: email, username: username, password: password, repeatPassword: rePassword }), error = _b.error, value = _b.value;
-                    console.log(value);
+                    error = userModel_1.UserValidation.validate({ email: email, username: username, password: password, repeatPassword: rePassword }).error;
                     if (error)
                         throw error;
-                    userDB = new userModel_1["default"]({ email: email, username: username, password: password, repeatPassword: rePassword, userTag: userTag });
+                    userDB = new userModel_1["default"]({ email: email, username: username, password: password, userTag: userTag });
                     userTag++;
                     return [4 /*yield*/, userDB.save()];
                 case 1:
-                    _c.sent();
+                    _b.sent();
                     if (userDB) {
                         res.send({ register: true, userDB: userDB });
                     }
@@ -69,7 +66,7 @@ function register(req, res) {
                     }
                     return [3 /*break*/, 3];
                 case 2:
-                    error_1 = _c.sent();
+                    error_1 = _b.sent();
                     res.send({ error: error_1.message });
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
