@@ -88,7 +88,6 @@ function handleRegister(event) {
                     username = event.target.username.value;
                     password = event.target.password.value;
                     rePassword = event.target.rePassword.value;
-                    console.log("from handleRegister");
                     return [4 /*yield*/, axios.post('/users/register', { email: email, username: username, password: password, rePassword: rePassword })];
                 case 1:
                     data = (_a.sent()).data;

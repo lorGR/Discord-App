@@ -45,9 +45,7 @@ async function handleRegister(event) {
         const username = event.target.username.value;
         const password = event.target.password.value;
         const rePassword = event.target.rePassword.value;
-
-        console.log("from handleRegister");
-
+        
         //@ts-ignore
         const { data } = await axios.post('/users/register', { email, username, password, rePassword });
         if (!data) throw new Error("Couldn't recieve data from axios POST: '/users/register' ");
