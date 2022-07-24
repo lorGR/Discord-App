@@ -60,6 +60,7 @@ async function handleRegister(event) {
     }
 }
 
+// IMPORTENT!!!!!!!!!!!!!! - CHECK WHAT ERROR GET WHEN SOMEONE IS USEING SPACE IN PASSWORD!!!!!!!!!!!!
 function handleErrorsRegister(error: string) {
     try {
         if (error.includes("E11000")) errorContainer.innerHTML = "Email is already is use";

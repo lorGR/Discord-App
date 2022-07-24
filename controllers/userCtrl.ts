@@ -1,5 +1,8 @@
 import express from 'express';
 import UserModel, { UserValidation } from '../models/userModel';
+import bcrypt from 'bcrypt';
+import jwt from 'jwt-simple';
+const saltRounds = 10;
 
 let userTag = 1000;
 
@@ -10,6 +13,8 @@ export async function register(req: express.Request, res: express.Response) {
 
         const { error } = UserValidation.validate({ email, username, password, repeatPassword: rePassword });
         if(error) throw error;
+
+        
 
         const userDB = new UserModel({ email, username, password, userTag});
         userTag++;

@@ -38,6 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 exports.register = void 0;
 var userModel_1 = require("../models/userModel");
+var saltRounds = 10;
 var userTag = 1000;
 function register(req, res) {
     return __awaiter(this, void 0, void 0, function () {

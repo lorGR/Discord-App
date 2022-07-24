@@ -109,6 +109,7 @@ function handleRegister(event) {
         });
     });
 }
+// IMPORTENT!!!!!!!!!!!!!! - CHECK WHAT ERROR GET WHEN SOMEONE IS USEING SPACE IN PASSWORD!!!!!!!!!!!!
 function handleErrorsRegister(error) {
     try {
         if (error.includes("E11000"))
