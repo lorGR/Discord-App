@@ -1,3 +1,5 @@
+const errorContainer = document.getElementById("errorContainer");
+
 function handleLoginPage() {
     try {
         window.location.href = "./login.html";
@@ -38,7 +40,28 @@ function handleVisibleReIcon() {
     }
 }
 
-const errorContainer = document.getElementById("errorContainer");
+function handleErrorsRegister(error: string) : void {
+    try {
+        if (error.includes('email_1 dup key: { email:')) errorContainer.innerHTML = "Email is already is in use";
+        if (error.includes('"email" must be a valid email')) errorContainer.innerHTML = "Email is not valid - [.com / .net]";
+
+        if (error.includes('"username" length must be at least 3 characters long')) errorContainer.innerHTML = "Username should be at least 3 chracters";
+        if (error.includes('"username" length must be less than or equal to 16 characters long')) errorContainer.innerHTML = "Username can't be longer than 16 characters";
+        if (error.includes('username_1 dup key: { username:')) errorContainer.innerHTML = "Username is already in use";
+
+        if (error.includes('"password" length must be at least 6 characters long')) errorContainer.innerHTML = "Password should be at least 6 characters";
+        if (error.includes('"password" length must be less than or equal to 16 characters long')) errorContainer.innerHTML = "Password can't be longer than 16 characters";
+        if (error.includes('"password" should contain at least 1 special character')) errorContainer.innerHTML = "Password should contain at least 1 special character";
+        if (error.includes('"password" should contain at least 1 lowercase character')) errorContainer.innerHTML = "Password should contain at least 1 lower case letter";
+        if (error.includes('"password" should contain at least 1 uppercase character')) errorContainer.innerHTML = "Password should contain at least 1 upper case letter";
+        if (error.includes('"password" should contain at least 1 numeric character')) errorContainer.innerHTML = "Password should contain at least 1 numeric";
+        if (error.includes('"password" should not contain white spaces')) errorContainer.innerHTML = "Password can't contain spaces";
+
+        if (error.includes('"repeatPassword" must be [ref:password]')) errorContainer.innerHTML = "Password doesn't match";
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 async function handleRegister(event) {
     try {
@@ -55,28 +78,6 @@ async function handleRegister(event) {
         console.log(data);
         const { register, userDB, error } = data;
         if (error) handleErrorsRegister(error);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-function handleErrorsRegister(error: string) {
-    try {
-        if (error.includes("E11000")) errorContainer.innerHTML = "Email is already is use";
-        if (error.includes('"email" must be a valid email')) errorContainer.innerHTML = "Email is not valid - [.com / .net]";
-
-        if (error.includes('"username" length must be at least 3 characters long')) errorContainer.innerHTML = "Username should be at least 3 chracters";
-        if (error.includes('"username" length must be less than or equal to 16 characters long')) errorContainer.innerHTML = "Username can't be longer than 16 characters";
-
-        if (error.includes('"password" length must be at least 6 characters long')) errorContainer.innerHTML = "Password should be at least 6 characters";
-        if (error.includes('"password" length must be less than or equal to 16 characters long')) errorContainer.innerHTML = "Password can't be longer than 16 characters";
-        if (error.includes('"password" should contain at least 1 special character')) errorContainer.innerHTML = "Password should contain at least 1 special character";
-        if (error.includes('"password" should contain at least 1 lowercase character')) errorContainer.innerHTML = "Password should contain at least 1 lower case letter";
-        if (error.includes('"password" should contain at least 1 uppercase character')) errorContainer.innerHTML = "Password should contain at least 1 upper case letter";
-        if (error.includes('"password" should contain at least 1 numeric character')) errorContainer.innerHTML = "Password should contain at least 1 numeric";
-        if (error.includes('"password" should not contain white spaces')) errorContainer.innerHTML = "Password can't contain spaces";
-
-        if (error.includes('"repeatPassword" must be [ref:password]')) errorContainer.innerHTML = "Password doesn't match";
     } catch (error) {
         console.error(error);
     }

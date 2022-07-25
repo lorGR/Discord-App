@@ -13,15 +13,12 @@ var UserSchema = new mongoose_1["default"].Schema({
     },
     username: {
         type: String,
+        unique: true,
         required: true
     },
     password: {
         type: String,
         require: true
-    },
-    userTag: {
-        type: Number,
-        required: true
     },
     status: {
         type: Boolean,

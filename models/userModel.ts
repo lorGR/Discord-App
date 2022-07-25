@@ -12,15 +12,12 @@ const UserSchema = new mongoose.Schema({
     },
     username: {
         type: String,
+        unique: true,
         required: true
     },
     password: {
         type: String,
         require: true
-    },
-    userTag: {
-        type: Number,
-        required: true
     },
     status: {
         type: Boolean,
@@ -44,6 +41,6 @@ export const UserValidation = Joi.object({
         .minOfUppercase(1)
         .minOfNumeric(1)
         .noWhiteSpaces()
-        .required(),    
+        .required(),
     repeatPassword: Joi.ref('password')
 });
