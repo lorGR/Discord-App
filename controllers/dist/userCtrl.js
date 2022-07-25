@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.login = exports.register = void 0;
+exports.getUser = exports.login = exports.register = void 0;
 var userModel_1 = require("../models/userModel");
 var bcrypt_1 = require("bcrypt");
 var jwt_simple_1 = require("jwt-simple");
@@ -104,7 +104,7 @@ function login(req, res) {
                     if (!secret)
                         throw new Error("Couldn't find secret");
                     JWTCookie = jwt_simple_1["default"].encode(cookie, secret);
-                    res.cookie("user", JWTCookie);
+                    res.cookie("userID", JWTCookie);
                     res.send({ login: true, userDB: userDB });
                     return [3 /*break*/, 4];
                 case 3:
@@ -117,3 +117,35 @@ function login(req, res) {
     });
 }
 exports.login = login;
+function getUser(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var secret, userID, decodedUserId, userId, userDB, error_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    secret = process.env.JWT_SECRET;
+                    userID = req.cookies.userID;
+                    if (!userID)
+                        throw new Error("Couldn't find user from cookies");
+                    decodedUserId = jwt_simple_1["default"].decode(userID, secret);
+                    userId = decodedUserId.userId;
+                    console.log(decodedUserId);
+                    console.log(userId);
+                    return [4 /*yield*/, userModel_1["default"].findById(userId)];
+                case 1:
+                    userDB = _a.sent();
+                    if (!userDB)
+                        throw new Error("Couldn't find user id with the id: " + userId);
+                    res.send({ userDB: userDB });
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_3 = _a.sent();
+                    res.send({ error: error_3.message });
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.getUser = getUser;

@@ -103,3 +103,16 @@ body .container .app .friends-list__user {
 body .container .app .friends-list__user img {
   width: 2em;
 }
+body .container .app .main-app {
+  display: grid;
+  place-items: center;
+  color: #fff;
+}
+body .container .app .main-app img {
+  width: 15%;
+  border: 2px solid #6666f8;
+  border-radius: 50%;
+}
+body .container .app .main-app p {
+  margin: 0;
+}

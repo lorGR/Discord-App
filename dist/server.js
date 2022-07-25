@@ -8,6 +8,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const http_1 = __importDefault(require("http"));
 const socket_io_1 = require("socket.io");
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const app = express_1.default();
 const server = http_1.default.createServer(app);
 const io = new socket_io_1.Server(server);
@@ -33,6 +34,7 @@ io.on("connection", (socket) => {
     });
 });
 app.use(express_1.default.json());
+app.use(cookie_parser_1.default());
 app.use(express_1.default.static("public"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 app.use("/users", userRoutes_1.default);

@@ -1,3 +1,5 @@
+const errorContainerLogin = document.getElementById("errorContainer") as HTMLSpanElement;
+
 function handleRegisterPage() {
     try {
         window.location.href = "./register.html";
@@ -22,9 +24,22 @@ function handleVisiblePass() {
     }
 }
 
+function handleErrorsLogin (error: string){
+    try {
+        console.log('from the handleErrorsLogin');
+        console.log(errorContainerLogin);
+        if (error.includes(`User with that email can't be found`)) errorContainerLogin.innerHTML = "Email address isn't registered";
+        if (error.includes(`Email or password do not match`)) errorContainerLogin.innerHTML = "Email or password doesn't match";
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 async function handleLogin(event) {
     try {
         event.preventDefault();
+        errorContainerLogin.innerHTML = '';
+
         const email = event.target.email.value;
         const password = event.target.password.value;
         if (!email || !password) throw new Error("All fields must be filled");
@@ -34,7 +49,7 @@ async function handleLogin(event) {
         if (!data) throw new Error("Couldn't recieve data from axios POST: '/users/login' ");
         console.log(data);
         const { login, userDB, error } = data;
-        if (error) throw error;
+        if (error) handleErrorsLogin(error);
         if (login) window.location.href = "./home.html";
     } catch (error) {
         console.error(error);

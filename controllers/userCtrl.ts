@@ -2,6 +2,7 @@ import express from 'express';
 import UserModel, { UserValidation } from '../models/userModel';
 import bcrypt from 'bcrypt';
 import jwt from 'jwt-simple';
+import { decode } from 'punycode';
 const saltRounds = 10;
 
 export async function register(req: express.Request, res: express.Response) {
@@ -15,7 +16,7 @@ export async function register(req: express.Request, res: express.Response) {
         const salt = bcrypt.genSaltSync(saltRounds);
         const hash = bcrypt.hashSync(password, salt);
 
-        const userDB = new UserModel({ email, username, password: hash});
+        const userDB = new UserModel({ email, username, password: hash });
         await userDB.save();
 
         if (userDB) {
@@ -37,7 +38,7 @@ export async function login(req: express.Request, res: express.Response) {
         const userDB = await UserModel.findOne({ email });
         if (!userDB) throw new Error("User with that email can't be found")
         if (!userDB.password) throw new Error("No password in DB");
-        
+
         const isMatch = await bcrypt.compare(password, userDB.password);
         if (!isMatch) throw new Error("Email or password do not match");
 
@@ -49,9 +50,29 @@ export async function login(req: express.Request, res: express.Response) {
 
         const JWTCookie = jwt.encode(cookie, secret);
 
-        res.cookie("user", JWTCookie);
-        res.send({ login:true, userDB });
+        res.cookie("userID", JWTCookie);
+        res.send({ login: true, userDB });
     } catch (error) {
         res.send({ error: error.message });
+    }
+}
+
+export async function getUser(req: express.Request, res: express.Response) {
+    try {
+        const secret = process.env.JWT_SECRET;
+        const { userID } = req.cookies;
+        if (!userID) throw new Error("Couldn't find user from cookies");
+
+        const decodedUserId = jwt.decode(userID, secret);
+        const { userId } = decodedUserId;
+        console.log(decodedUserId);
+        console.log(userId); 
+
+        const userDB = await UserModel.findById(userId);
+        if (!userDB) throw new Error(`Couldn't find user id with the id: ${userId}`);
+
+        res.send({ userDB });
+    } catch (error) {
+        res.send({ error: error.message })
     }
 }

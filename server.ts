@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import http from 'http';
 import { Server } from 'socket.io';
+import cookieParser from 'cookie-parser';
 
 const app : express.Application = express();
 const server = http.createServer(app);
@@ -33,7 +34,9 @@ io.on("connection", (socket) => {
 })
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static("public"));
+
 
 import userRoutes from './routes/userRoutes';
 app.use("/users", userRoutes)

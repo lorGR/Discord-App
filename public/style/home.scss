@@ -115,6 +115,20 @@ body {
                     }
                 }
             }
+
+            .main-app {
+                display: grid;
+                place-items: center;
+                color: #fff;
+                img {
+                    width: 15%;
+                    border: 2px solid #6666f8;
+                    border-radius: 50%;
+                }
+                p {
+                    margin: 0;
+                }
+            }
         }
     }
 }
