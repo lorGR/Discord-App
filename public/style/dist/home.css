@@ -29,13 +29,12 @@ body .container .app {
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  gap: 5em;
 }
 body .container .app header {
   width: 8%;
-  margin: 0 1em;
-  border-right: 2px solid #6666f8;
+  margin-left: 1em;
   padding-right: 1em;
+  border-right: 2px solid #6666f8;
 }
 body .container .app header nav ul {
   display: flex;
@@ -79,19 +78,28 @@ body .container .app header nav ul #addNewGroup:hover img {
   border: 2px solid #6666f8;
   background-color: #fff;
 }
-body .container .app button {
-  cursor: pointer;
-  width: 30%;
-  border: 2px solid #6666f8;
+body .container .app .friends-list {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
   color: #fff;
-  border-radius: 40px;
-  background-color: #474867;
-  padding: 1em 0.75em;
-  font-size: 1.5rem;
-  font-weight: 900;
-  transition: all 0.35s ease-in-out;
+  border-right: 2px solid #6666f8;
+  max-width: 25%;
+  justify-content: space-between;
 }
-body .container .app button:hover {
-  background-color: #5a5b74;
-  width: 35%;
+body .container .app .friends-list__title {
+  border-bottom: 1px solid #6666f8;
+  display: flex;
+  gap: 1em;
+}
+body .container .app .friends-list__title img {
+  width: 2em;
+}
+body .container .app .friends-list__user {
+  display: flex;
+  gap: 1em;
+  border-top: 1px solid #6666f8;
+}
+body .container .app .friends-list__user img {
+  width: 2.5em;
 }
