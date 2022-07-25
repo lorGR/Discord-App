@@ -61,7 +61,7 @@ function handleVisiblePass() {
 }
 function handleLogin(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var email, password, data, error_1;
+        var email, password, data, login, userDB, error, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -77,6 +77,11 @@ function handleLogin(event) {
                     if (!data)
                         throw new Error("Couldn't recieve data from axios POST: '/users/login' ");
                     console.log(data);
+                    login = data.login, userDB = data.userDB, error = data.error;
+                    if (error)
+                        throw error;
+                    if (login)
+                        window.location.href = "./home.html";
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
