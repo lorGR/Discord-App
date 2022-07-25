@@ -46,7 +46,15 @@ export async function login(req: express.Request, res: express.Response) {
 
         //sending cookie
         const cookie = { userId: userDB._id };
-        
+        const secret = process.env.JWT_SECRET;
+
+        if (!secret) throw new Error("Couldn't find secret");
+
+        const JWTCookie = jwt.encode(cookie, secret);
+
+        res.cookie("user", JWTCookie);
+        res.send({ login:true, userDB });
+
     } catch (error) {
         res.send({ error: error.message });
     }
