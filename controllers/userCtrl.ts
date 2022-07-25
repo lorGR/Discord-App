@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jwt-simple';
 import { decode } from 'punycode';
 const saltRounds = 10;
-// send cookie after registration!!!!!!!!!!!!!!!!!
+
 export async function register(req: express.Request, res: express.Response) {
     try {
         const { email, username, password, rePassword } = req.body;
@@ -19,7 +19,15 @@ export async function register(req: express.Request, res: express.Response) {
         const userDB = new UserModel({ email, username, password: hash });
         await userDB.save();
 
+        //sending cookie
+        const cookie = { userId: userDB._id }
+        const secret = process.env.JWT_SECRET;
+        if (!secret) throw new Error("Couldn't load secret from .env");
+
+        const JWTCookie = jwt.encode(cookie, secret);
+
         if (userDB) {
+            res.cookie("userID", JWTCookie);
             res.send({ register: true, userDB });
         } else {
             res.send({ register: false });
@@ -45,8 +53,7 @@ export async function login(req: express.Request, res: express.Response) {
         //sending cookie
         const cookie = { userId: userDB._id };
         const secret = process.env.JWT_SECRET;
-
-        if (!secret) throw new Error("Couldn't find secret");
+        if (!secret) throw new Error("Couldn't load secret from .env");
 
         const JWTCookie = jwt.encode(cookie, secret);
 
@@ -60,13 +67,15 @@ export async function login(req: express.Request, res: express.Response) {
 export async function getUser(req: express.Request, res: express.Response) {
     try {
         const secret = process.env.JWT_SECRET;
+        if (!secret) throw new Error("Couldn't load secret from .env");
+
         const { userID } = req.cookies;
         if (!userID) throw new Error("Couldn't find user from cookies");
 
         const decodedUserId = jwt.decode(userID, secret);
         const { userId } = decodedUserId;
         console.log(decodedUserId);
-        console.log(userId); 
+        console.log(userId);
 
         const userDB = await UserModel.findById(userId);
         if (!userDB) throw new Error(`Couldn't find user id with the id: ${userId}`);

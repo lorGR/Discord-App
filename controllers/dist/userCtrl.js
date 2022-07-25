@@ -41,10 +41,9 @@ var userModel_1 = require("../models/userModel");
 var bcrypt_1 = require("bcrypt");
 var jwt_simple_1 = require("jwt-simple");
 var saltRounds = 10;
-// send cookie after registration!!!!!!!!!!!!!!!!!
 function register(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, email, username, password, rePassword, error, salt, hash, userDB, error_1;
+        var _a, email, username, password, rePassword, error, salt, hash, userDB, cookie, secret, JWTCookie, error_1;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
@@ -61,7 +60,13 @@ function register(req, res) {
                     return [4 /*yield*/, userDB.save()];
                 case 1:
                     _b.sent();
+                    cookie = { userId: userDB._id };
+                    secret = process.env.JWT_SECRET;
+                    if (!secret)
+                        throw new Error("Couldn't load secret from .env");
+                    JWTCookie = jwt_simple_1["default"].encode(cookie, secret);
                     if (userDB) {
+                        res.cookie("userID", JWTCookie);
                         res.send({ register: true, userDB: userDB });
                     }
                     else {
@@ -103,7 +108,7 @@ function login(req, res) {
                     cookie = { userId: userDB._id };
                     secret = process.env.JWT_SECRET;
                     if (!secret)
-                        throw new Error("Couldn't find secret");
+                        throw new Error("Couldn't load secret from .env");
                     JWTCookie = jwt_simple_1["default"].encode(cookie, secret);
                     res.cookie("userID", JWTCookie);
                     res.send({ login: true, userDB: userDB });
@@ -126,6 +131,8 @@ function getUser(req, res) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
                     secret = process.env.JWT_SECRET;
+                    if (!secret)
+                        throw new Error("Couldn't load secret from .env");
                     userID = req.cookies.userID;
                     if (!userID)
                         throw new Error("Couldn't find user from cookies");
