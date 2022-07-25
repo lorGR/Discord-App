@@ -41,6 +41,7 @@ var userModel_1 = require("../models/userModel");
 var bcrypt_1 = require("bcrypt");
 var jwt_simple_1 = require("jwt-simple");
 var saltRounds = 10;
+// send cookie after registration!!!!!!!!!!!!!!!!!
 function register(req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var _a, email, username, password, rePassword, error, salt, hash, userDB, error_1;

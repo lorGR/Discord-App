@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jwt-simple';
 import { decode } from 'punycode';
 const saltRounds = 10;
-
+// send cookie after registration!!!!!!!!!!!!!!!!!
 export async function register(req: express.Request, res: express.Response) {
     try {
         const { email, username, password, rePassword } = req.body;
