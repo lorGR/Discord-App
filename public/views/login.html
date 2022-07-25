@@ -19,16 +19,16 @@
             <div class="app">
                 <img onclick="turn360()" id="logo" src="../assets/images/discord-logo.png" alt="logo">
                 <div class="login-form">
-                    <form>
+                    <form onsubmit="handleLogin(event)">
                         <h1>Login</h1>
                         <div class="custome-label">
                             <label for="loginEmail">Email:</label>
-                            <input type="email" id="loginEmail">
+                            <input type="email" name="email" id="loginEmail">
                             <img  class="label-icon" src="../assets/svgs/email-svgrepo-com.svg" alt="email icon">
                         </div>
                         <div class="custome-label">
                             <label for="loginPassword">Password:</label>
-                            <input type="password" id="loginPassword">
+                            <input type="password" name="password" id="loginPassword">
                             <img onclick="handleVisiblePass()" id="passwordIcon" class="label-icon" src="../assets/svgs/password-svgrepo-com.svg" alt="password icon">
                         </div>
                         <button>Login</button>

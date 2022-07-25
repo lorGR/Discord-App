@@ -66,10 +66,12 @@ function handleErrorsRegister(error: string) : void {
 async function handleRegister(event) {
     try {
         event.preventDefault();
+        
         const email = event.target.email.value;
         const username = event.target.username.value;
         const password = event.target.password.value;
         const rePassword = event.target.rePassword.value;
+        if (!email || !username || !password || !rePassword) throw new Error("All fields must be filled");
 
         errorContainer.innerHTML = "";
         //@ts-ignore

@@ -21,3 +21,14 @@ function handleVisiblePass() {
         console.error(error);
     }
 }
+
+async function handleLogin(event) {
+    try {
+        event.preventDefault();
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        if ()
+    } catch (error) {
+        console.error(error);
+    }
+}

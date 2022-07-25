@@ -122,6 +122,8 @@ function handleRegister(event) {
                     username = event.target.username.value;
                     password = event.target.password.value;
                     rePassword = event.target.rePassword.value;
+                    if (!email || !username || !password || !rePassword)
+                        throw new Error("All fields must be filled");
                     errorContainer.innerHTML = "";
                     return [4 /*yield*/, axios.post('/users/register', { email: email, username: username, password: password, rePassword: rePassword })];
                 case 1:
