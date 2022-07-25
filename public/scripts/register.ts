@@ -78,6 +78,7 @@ async function handleRegister(event) {
         console.log(data);
         const { register, userDB, error } = data;
         if (error) handleErrorsRegister(error);
+        if (register) window.location.href = "./login.html";
     } catch (error) {
         console.error(error);
     }

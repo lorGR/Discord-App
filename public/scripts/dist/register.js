@@ -132,6 +132,8 @@ function handleRegister(event) {
                     register = data.register, userDB = data.userDB, error = data.error;
                     if (error)
                         handleErrorsRegister(error);
+                    if (register)
+                        window.location.href = "./login.html";
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
