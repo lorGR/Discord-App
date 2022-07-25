@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 function handleGetUser() {
     return __awaiter(this, void 0, void 0, function () {
-        var data, error_1;
+        var data, userDB, error, username, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -47,6 +47,12 @@ function handleGetUser() {
                     if (!data)
                         throw new Error("Couldn't recieve data from axios GET: '/users/get-user' ");
                     console.log(data);
+                    userDB = data.userDB, error = data.error;
+                    if (error)
+                        throw error;
+                    console.log(userDB);
+                    username = document.getElementById("usernameBox");
+                    username.innerHTML = userDB.username;
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();

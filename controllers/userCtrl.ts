@@ -77,7 +77,7 @@ export async function getUser(req: express.Request, res: express.Response) {
 
         const userDB = await UserModel.findById(userId);
         if (!userDB) throw new Error(`Couldn't find user id with the id: ${userId}`);
-
+        
         res.send({ userDB });
     } catch (error) {
         res.send({ error: error.message })
