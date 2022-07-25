@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -24,12 +25,13 @@
                         <div class="custome-label">
                             <label for="loginEmail">Email:</label>
                             <input type="email" name="email" id="loginEmail">
-                            <img  class="label-icon" src="../assets/svgs/email-svgrepo-com.svg" alt="email icon">
+                            <img class="label-icon" src="../assets/svgs/email-svgrepo-com.svg" alt="email icon">
                         </div>
                         <div class="custome-label">
                             <label for="loginPassword">Password:</label>
                             <input type="password" name="password" id="loginPassword">
-                            <img onclick="handleVisiblePass()" id="passwordIcon" class="label-icon" src="../assets/svgs/password-svgrepo-com.svg" alt="password icon">
+                            <img onclick="handleVisiblePass()" id="passwordIcon" class="label-icon"
+                                src="../assets/svgs/password-svgrepo-com.svg" alt="password icon">
                         </div>
                         <button>Login</button>
                         <p>Not a member yet? <a onclick="handleRegisterPage()">register now!</a></p>

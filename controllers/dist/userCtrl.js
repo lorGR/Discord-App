@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.register = void 0;
+exports.login = exports.register = void 0;
 var userModel_1 = require("../models/userModel");
 var bcrypt_1 = require("bcrypt");
 var saltRounds = 10;
@@ -50,7 +50,7 @@ function register(req, res) {
                     _b.trys.push([0, 2, , 3]);
                     _a = req.body, email = _a.email, username = _a.username, password = _a.password, rePassword = _a.rePassword;
                     if (!email || !username || !password || !rePassword)
-                        throw new Error("All fields must be filled");
+                        throw new Error("Couldn't get all fields from req.body");
                     error = userModel_1.UserValidation.validate({ email: email, username: username, password: password, repeatPassword: rePassword }).error;
                     if (error)
                         throw error;
@@ -78,3 +78,37 @@ function register(req, res) {
     });
 }
 exports.register = register;
+function login(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var _a, email, password, userDB, isMatch, cookie, error_2;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _b.trys.push([0, 3, , 4]);
+                    _a = req.body, email = _a.email, password = _a.password;
+                    if (!email || !password)
+                        throw new Error("Couldn't get all fields from req.body");
+                    return [4 /*yield*/, userModel_1["default"].findOne({ email: email })];
+                case 1:
+                    userDB = _b.sent();
+                    if (!userDB)
+                        throw new Error("User with that email can't be found");
+                    if (!userDB.password)
+                        throw new Error("No password in DB");
+                    return [4 /*yield*/, bcrypt_1["default"].compare(password, userDB.password)];
+                case 2:
+                    isMatch = _b.sent();
+                    if (!isMatch)
+                        throw new Error("Email or password do not match");
+                    cookie = { userId: userDB._id };
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_2 = _b.sent();
+                    res.send({ error: error_2.message });
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.login = login;

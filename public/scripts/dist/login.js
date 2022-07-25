@@ -61,19 +61,29 @@ function handleVisiblePass() {
 }
 function handleLogin(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var email, password;
+        var email, password, data, error_1;
         return __generator(this, function (_a) {
-            try {
-                event.preventDefault();
-                email = event.target.email.value;
-                password = event.target.password.value;
-                if ()
-                    ;
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    event.preventDefault();
+                    email = event.target.email.value;
+                    password = event.target.password.value;
+                    if (!email || !password)
+                        throw new Error("All fields must be filled");
+                    return [4 /*yield*/, axios.post("/users/login", { email: email, password: password })];
+                case 1:
+                    data = (_a.sent()).data;
+                    if (!data)
+                        throw new Error("Couldn't recieve data from axios POST: '/users/login' ");
+                    console.log(data);
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_1 = _a.sent();
+                    console.error(error_1);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
-            catch (error) {
-                console.error(error);
-            }
-            return [2 /*return*/];
         });
     });
 }
