@@ -33,9 +33,9 @@ body {
             gap: 5em;
 
             header {
-                width: 20%;
+                width: 8%;
                 margin: 0 1em;
-                border-right: 1px solid #6666f8;
+                border-right: 2px solid #6666f8;
                 padding-right: 1em;
 
                 nav {
@@ -44,20 +44,44 @@ body {
                         flex-direction: column;
                         align-items: center;
                         padding: 0;
-
+                        gap: 1em;
                         li {
+                            cursor: pointer;
                             list-style: none;
+                            transition: all .4s ease-in-out;
                             img {
-                                width: 5em;
+                                width: 1em;
                                 align-items: center;
                                 width: 100%;
-                                border: 1px solid #6666f8;
+                                border: 2px solid #6666f8;
                                 border-radius: 50%;
+                                transition: all .4s ease-in-out;
+                            }
+                            img:hover {
+                                border: 2px solid #fff;
+                            }          
+                        }
+                        #homeButton {
+                            padding: .5em;
+                            border: 2px solid #6666f8;
+                            border-radius: 1em;
+                            display: flex;
+                        }
+                        #homeButton:hover {
+                            border: 2px solid #fff;
+                            img {
+                                background-color: #fff;
                             }
                         }
                         #addNewGroup {
                             img {
                                 padding: 1.5em;
+                            }
+                        }
+                        #addNewGroup:hover {
+                            img {
+                                border: 2px solid #6666f8;
+                                background-color: #fff;
                             }
                         }
                     }
