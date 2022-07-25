@@ -74,8 +74,6 @@ export async function getUser(req: express.Request, res: express.Response) {
 
         const decodedUserId = jwt.decode(userID, secret);
         const { userId } = decodedUserId;
-        console.log(decodedUserId);
-        console.log(userId);
 
         const userDB = await UserModel.findById(userId);
         if (!userDB) throw new Error(`Couldn't find user id with the id: ${userId}`);

@@ -138,8 +138,6 @@ function getUser(req, res) {
                         throw new Error("Couldn't find user from cookies");
                     decodedUserId = jwt_simple_1["default"].decode(userID, secret);
                     userId = decodedUserId.userId;
-                    console.log(decodedUserId);
-                    console.log(userId);
                     return [4 /*yield*/, userModel_1["default"].findById(userId)];
                 case 1:
                     userDB = _a.sent();
