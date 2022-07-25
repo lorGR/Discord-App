@@ -41,7 +41,6 @@ var userModel_1 = require("../models/userModel");
 var bcrypt_1 = require("bcrypt");
 var jwt_simple_1 = require("jwt-simple");
 var saltRounds = 10;
-var userTag = 1000;
 function register(req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var _a, email, username, password, rePassword, error, salt, hash, userDB, error_1;
@@ -57,8 +56,7 @@ function register(req, res) {
                         throw error;
                     salt = bcrypt_1["default"].genSaltSync(saltRounds);
                     hash = bcrypt_1["default"].hashSync(password, salt);
-                    userDB = new userModel_1["default"]({ email: email, username: username, password: hash, userTag: userTag });
-                    userTag++;
+                    userDB = new userModel_1["default"]({ email: email, username: username, password: hash });
                     return [4 /*yield*/, userDB.save()];
                 case 1:
                     _b.sent();

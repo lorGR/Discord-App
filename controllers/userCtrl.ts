@@ -4,8 +4,6 @@ import bcrypt from 'bcrypt';
 import jwt from 'jwt-simple';
 const saltRounds = 10;
 
-let userTag = 1000;
-
 export async function register(req: express.Request, res: express.Response) {
     try {
         const { email, username, password, rePassword } = req.body;
@@ -17,8 +15,7 @@ export async function register(req: express.Request, res: express.Response) {
         const salt = bcrypt.genSaltSync(saltRounds);
         const hash = bcrypt.hashSync(password, salt);
 
-        const userDB = new UserModel({ email, username, password: hash, userTag });
-        userTag++;
+        const userDB = new UserModel({ email, username, password: hash});
         await userDB.save();
 
         if (userDB) {
@@ -54,7 +51,6 @@ export async function login(req: express.Request, res: express.Response) {
 
         res.cookie("user", JWTCookie);
         res.send({ login:true, userDB });
-
     } catch (error) {
         res.send({ error: error.message });
     }
