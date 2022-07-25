@@ -31,30 +31,39 @@ body {
             display: flex;
             flex-direction: row;
             gap: 5em;
+
             header {
                 width: 20%;
                 margin: 0 1em;
                 border-right: 1px solid #6666f8;
                 padding-right: 1em;
+
                 nav {
                     ul {
                         display: flex;
                         flex-direction: column;
                         align-items: center;
                         padding: 0;
+
                         li {
                             list-style: none;
-                           img {
-                            width: 5em;
-                            align-items: center;
-                            width: 100%;
-                            border: 1px solid #6666f8;
-                            border-radius: 50%;
-                           } 
+
+                            img {
+                                width: 5em;
+                                align-items: center;
+                                width: 100%;
+                                border: 1px solid #6666f8;
+                                border-radius: 50%;
+                            }
+
+                            #addNewGorup {
+                                width: ;
+                            }
                         }
                     }
                 }
             }
+
             button {
                 cursor: pointer;
                 width: 30%;
