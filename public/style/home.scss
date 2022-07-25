@@ -47,7 +47,6 @@ body {
 
                         li {
                             list-style: none;
-
                             img {
                                 width: 5em;
                                 align-items: center;
@@ -55,9 +54,10 @@ body {
                                 border: 1px solid #6666f8;
                                 border-radius: 50%;
                             }
-
-                            #addNewGorup {
-                                width: ;
+                        }
+                        #addNewGroup {
+                            img {
+                                padding: 1.5em;
                             }
                         }
                     }

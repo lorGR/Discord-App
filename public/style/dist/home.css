@@ -53,6 +53,9 @@ body .container .app header nav ul li img {
   border: 1px solid #6666f8;
   border-radius: 50%;
 }
+body .container .app header nav ul #addNewGroup img {
+  padding: 1.5em;
+}
 body .container .app button {
   cursor: pointer;
   width: 30%;
