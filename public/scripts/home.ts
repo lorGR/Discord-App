@@ -14,6 +14,14 @@ function handleAddFriendPage() {
     }
 }
 
+function handleSettingPage() {
+    try {
+        window.location.href = "./user-setting.html";
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 async function handleGetUser() {
     try {
         //@ts-ignore

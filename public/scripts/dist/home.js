@@ -50,6 +50,14 @@ function handleAddFriendPage() {
         console.error(error);
     }
 }
+function handleSettingPage() {
+    try {
+        window.location.href = "./user-setting.html";
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
 function handleGetUser() {
     return __awaiter(this, void 0, void 0, function () {
         var data, userDB, error, username, error_1;
