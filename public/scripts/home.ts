@@ -37,6 +37,8 @@ async function handleGetUser() {
         const username = document.getElementById("usernameBox") as HTMLHeadingElement;
         username.innerHTML = userDB.username;
 
+        const greetUser = document.getElementById("greetingUser") as HTMLHeadingElement;
+        if (greetUser) greetUser.innerHTML = `Hello ${userDB.username}`;
     } catch (error) {
         console.error(error);
     }
