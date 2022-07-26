@@ -1,3 +1,11 @@
+function handleHomePage() {
+    try {
+        window.location.href = "./home.html";
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 function handleAddFriendPage() {
     try {
         window.location.href = "./add-friend.html";

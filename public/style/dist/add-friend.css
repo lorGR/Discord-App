@@ -172,15 +172,43 @@ body .container .app .friends-list__user__settings img {
   width: 20%;
 }
 body .container .app .main-app {
-  display: grid;
-  place-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .container .app .main-app .add-friend {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .container .app .main-app .add-friend img {
+  width: 25%;
+}
+body .container .app .main-app .add-friend form {
+  border: 2px solid #474867;
+  border-radius: 1em;
+  transition: all 0.3s ease-in-out;
+}
+body .container .app .main-app .add-friend form .custome-label {
+  padding: 2em;
+  display: flex;
+  gap: 1em;
+  background-color: #474867;
+  border-radius: 1em;
   color: #fff;
 }
-body .container .app .main-app img {
-  width: 15%;
-  border: 2px solid #6666f8;
-  border-radius: 50%;
+body .container .app .main-app .add-friend form .custome-label input[type=text] {
+  color: #fff;
+  border: none;
+  border-bottom: 2px solid #fff;
+  background-color: #474867;
 }
-body .container .app .main-app p {
-  margin: 0;
+body .container .app .main-app .add-friend form .custome-label input[type=text]:focus {
+  outline: none;
+}
+body .container .app .main-app .add-friend form:focus-within {
+  border: 2px solid #6666f8;
+  border-radius: 1em;
 }

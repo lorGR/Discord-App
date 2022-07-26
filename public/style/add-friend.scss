@@ -31,7 +31,6 @@ body {
             margin: 0 auto;
             display: flex;
             flex-direction: row;
-            // gap: 5em;
 
             header {
                 width: 8%;
@@ -185,16 +184,51 @@ body {
             }
 
             .main-app {
-                display: grid;
-                place-items: center;
-                color: #fff;
-                img {
-                    width: 15%;
-                    border: 2px solid #6666f8;
-                    border-radius: 50%;
-                }
-                p {
-                    margin: 0;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .add-friend {
+                    width: 80%;
+                    // border: 2px solid yellow;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    img {
+                        width: 25%;
+                    }
+                    form {
+                        border: 2px solid #474867;
+                        border-radius: 1em;
+                        transition: all .3s ease-in-out;
+                        .custome-label {
+                            padding: 2em;
+                            display: flex;
+                            gap: 1em;
+                            background-color: #474867;
+                            border-radius: 1em;
+                            color: #fff;
+                            label {
+
+                            }
+                            input[type=text] {
+                                color: #fff;
+                                border: none;
+                                border-bottom: 2px solid #fff;
+                                background-color: #474867;
+                            }
+                            input[type=text]:focus {
+                                outline: none;
+                            }
+                            input[type=submit] {
+
+                            }
+                        }
+                    }
+                    form:focus-within {
+                        border: 2px solid #6666f8;
+                        border-radius: 1em;
+                    }
                 }
             }
         }
