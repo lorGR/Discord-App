@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discord - Register</title>
-    <link rel="stylesheet" href="../style/dist/add-friend.css">
+    <link rel="stylesheet" href="../style/dist/user-settings.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -69,7 +69,15 @@
                 </div>
             </section>
             <section class="main-app">
-                
+                <div class="user-container">
+                    <img onclick="turn360()" id="logo" src="../assets/images/discord-logo.png" alt="Discord logo">
+                    <div class="user-information">
+                        <label for="userEmail">Email:</label>
+                        <input type="email">
+                        <label for="userUsername">Username:</label>
+                        <input type="text">
+                    </div>
+                </div>
             </section>
         </div>
     </div>
