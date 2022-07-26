@@ -21,32 +21,34 @@
         <div class="app">
             <header>
                 <nav>
-                    <ul>
-                        <li id="homeButton">
-                            <img src="../assets/images/discord-logo.png" alt="logo home button">
-                        </li>
-                        <li>
-                            <img src="../assets/images/discord-logo.png" alt="group picture">
-                        </li>
-                        <li>
-                            <img src="../assets/images/discord-logo.png" alt="group picture">
-                        </li>
-                        <li>
-                            <img src="../assets/images/discord-logo.png" alt="group picture">
-                        </li>
-                        <li>
-                            <img src="../assets/images/discord-logo.png" alt="group picture">
-                        </li>
-                        <li id="addNewGroup">
-                            <img src="../assets/svgs/plus-svgrepo-com (1).svg" alt="group picture">
-                        </li>
-                    </ul>
+                    <div class="nav__home">
+                        <img src="../assets/images/discord-logo.png" alt="logo">
+                    </div>
+                    <div class="nav__groups">
+                        <ul>
+                            <li>
+                                <img src="../assets/images/discord_group_icon.png" alt="logo">
+                            </li>
+                            <li>
+                                <img src="../assets/images/discord_group_icon.png" alt="logo">
+                            </li>
+                            <li>
+                                <img src="../assets/images/discord_group_icon.png" alt="logo">
+                            </li>
+                            <li>
+                                <img src="../assets/images/discord_group_icon.png" alt="logo">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav__add-group">
+                        <img src="../assets/svgs/plus-svgrepo-com (1).svg" alt="plus icon">
+                    </div>
                 </nav>
             </header>
             <section class="friends-list">
                 <div class="friends-list__title">
                     <img src="../assets/svgs/myspace-logo-svgrepo-com.svg" alt="friends icon">
-                    <h2>Friends List</h2>
+                    <h3>Friends List</h3>
                 </div>
                 <div class="friends-list__friends">
                     <div class="friends-list__friends-list"></div>
@@ -59,7 +61,7 @@
                 </div>
             </section>
             <section class="main-app">
-                <h1>Hello Username</h1>
+                <h1 id="greetingUser">Hello Username</h1>
                 <img src="../assets/images/discord-logo.png" alt="discord logo">
                 <p>Talk with your friends from anywhere anytime.</p>
                 <p>Add new groups and disscuss about your loving stuff.</p>
