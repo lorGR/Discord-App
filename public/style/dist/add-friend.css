@@ -174,11 +174,7 @@ body .container .app .friends-list__user__settings img {
 body .container .app .main-app {
   display: grid;
   place-items: center;
-  width: 100%;
   color: #fff;
-}
-body .container .app .main-app h1 {
-  margin: 0;
 }
 body .container .app .main-app img {
   width: 15%;

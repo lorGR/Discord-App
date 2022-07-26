@@ -34,9 +34,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-function handleAddFriendPage() {
+function handleHomePage() {
     try {
-        window.location.href = "./add-friend.html";
+        window.location.href = "./home.html";
     }
     catch (error) {
         console.error(error);
@@ -44,7 +44,7 @@ function handleAddFriendPage() {
 }
 function handleGetUser() {
     return __awaiter(this, void 0, void 0, function () {
-        var data, userDB, error, username, greetUser, error_1;
+        var data, userDB, error, username, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -61,8 +61,6 @@ function handleGetUser() {
                     console.log(userDB);
                     username = document.getElementById("usernameBox");
                     username.innerHTML = userDB.username;
-                    greetUser = document.getElementById("greetingUser");
-                    greetUser.innerHTML = "Hello " + userDB.username;
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
