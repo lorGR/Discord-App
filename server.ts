@@ -22,14 +22,16 @@ if(mongodb_uri) {
     console.log("Couldn't find mongodb_uri");
 }
 
-let counter : number = 1;
 
 io.on("connection", (socket) => {
-    console.log(`user_${counter} connected`);
-    counter++;
+    console.log(`user connected`);
+    socket.on('chat message', (msg) => {
+        console.log(`message:${msg}`);
+        io.emit('chat message', msg);
+      })
     socket.on("disconnect", () => {
-        counter--;
-        console.log(`user_${counter} disconnected`);
+        
+        console.log(`user disconnected`);
     });
 })
 
