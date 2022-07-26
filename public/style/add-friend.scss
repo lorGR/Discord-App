@@ -194,8 +194,16 @@ body {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    gap: 2em;
                     img {
+                        cursor: pointer;
                         width: 25%;
+                        border: 2px solid #6666f8;
+                        border-radius: 50%;
+                        transition: all .3s ease-in-out;
+                    }
+                    img:hover {
+                        background-color: #fff;
                     }
                     form {
                         border: 2px solid #474867;
@@ -220,14 +228,32 @@ body {
                             input[type=text]:focus {
                                 outline: none;
                             }
+                            input[type=text]::placeholder {
+                                color: #fff;
+                                opacity: .3;
+                            }
                             input[type=submit] {
-
+                                cursor: pointer;
+                                color: #fff;
+                                border: none;
+                                padding: .25em 1.5em;
+                                background-color: #474867;
+                                border: 2px solid #6666f8;
+                                border-radius: 1em;
+                                transition: all .3s ease-in-out;
+                            }
+                            input[type=submit]:hover {
+                                color: #6666f8;
+                                background-color: #fff;
                             }
                         }
                     }
                     form:focus-within {
                         border: 2px solid #6666f8;
                         border-radius: 1em;
+                    }
+                    p {
+                        color: #fff;
                     }
                 }
             }
