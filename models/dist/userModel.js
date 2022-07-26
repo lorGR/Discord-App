@@ -20,6 +20,9 @@ var UserSchema = new mongoose_1["default"].Schema({
         type: String,
         require: true
     },
+    src: {
+        type: String
+    },
     status: {
         type: Boolean,
         "default": false

@@ -19,6 +19,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    src: {
+        type: String,
+    },
     status: {
         type: Boolean,
         default: false
