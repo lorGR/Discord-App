@@ -97,6 +97,8 @@ body {
                     .nav__add-group {
                         display: flex;
                         justify-content: center;
+                        border-top: 2px solid #6666f8;
+                        
                         img {
                             cursor: pointer;
                             width: 70%;
@@ -104,6 +106,7 @@ body {
                             border: 2px solid #6666f8;
                             border-radius: 50%;
                             transition: all .3s ease-in-out;
+                            margin-top: .5em;
                         }
                         img:hover {
                             border: 2px solid #fff;

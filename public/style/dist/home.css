@@ -94,6 +94,7 @@ body .container .app header nav .nav__groups::-webkit-scrollbar {
 body .container .app header nav .nav__add-group {
   display: flex;
   justify-content: center;
+  border-top: 2px solid #6666f8;
 }
 body .container .app header nav .nav__add-group img {
   cursor: pointer;
@@ -102,6 +103,7 @@ body .container .app header nav .nav__add-group img {
   border: 2px solid #6666f8;
   border-radius: 50%;
   transition: all 0.3s ease-in-out;
+  margin-top: 0.5em;
 }
 body .container .app header nav .nav__add-group img:hover {
   border: 2px solid #fff;
