@@ -21,6 +21,7 @@ const UserSchema = new mongoose.Schema({
     },
     src: {
         type: String,
+        default: '../assets/svgs/user-profile-svgrepo-com.svg'
     },
     status: {
         type: Boolean,

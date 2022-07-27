@@ -21,7 +21,8 @@ var UserSchema = new mongoose_1["default"].Schema({
         require: true
     },
     src: {
-        type: String
+        type: String,
+        "default": '../assets/svgs/user-profile-svgrepo-com.svg'
     },
     status: {
         type: Boolean,
