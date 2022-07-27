@@ -41,22 +41,21 @@ var userModel_1 = require("../models/userModel");
 var userFriends_1 = require("../models/userFriends");
 function addFriend(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, friendUsername, userDB, _b, friendDB, existFriend, _c, friendUser, userFriend, friendUserDB, userFriendDB, error_1;
-        return __generator(this, function (_d) {
-            switch (_d.label) {
+        var _a, friendUsername, userDB, _b, friendDB, existFriend, _c, friendUser, userFriend, _d, friendUserDB, userFriendDB, error_1;
+        return __generator(this, function (_e) {
+            switch (_e.label) {
                 case 0:
-                    _d.trys.push([0, 7, , 8]);
+                    _e.trys.push([0, 6, , 7]);
                     _a = req.body, friendUsername = _a.friendUsername, userDB = _a.userDB;
                     if (!friendUsername || !userDB)
                         throw new Error("Couldn't find friendUsername or UserDB from req.body");
-                    if (!(friendUsername !== userDB.username)) return [3 /*break*/, 5];
+                    if (!(friendUsername !== userDB.username)) return [3 /*break*/, 4];
                     return [4 /*yield*/, Promise.all([
                             userModel_1["default"].findOne({ username: friendUsername }),
                             userFriends_1["default"].find({ 'user._id': userDB._id, 'friend.username': friendUsername })
                         ])];
                 case 1:
-                    _b = _d.sent(), friendDB = _b[0], existFriend = _b[1];
-                    // const existFriend = await UserFriendModel.find({ 'user._id': userDB._id, 'friend.username': friendUsername });
+                    _b = _e.sent(), friendDB = _b[0], existFriend = _b[1];
                     if (Object.keys(existFriend).length > 0)
                         throw new Error("You already are friends");
                     if (!friendDB)
@@ -67,28 +66,26 @@ function addFriend(req, res) {
                             new userFriends_1["default"]({ user: friendDB, friend: userDB })
                         ])];
                 case 2:
-                    _c = _d.sent(), friendUser = _c[0], userFriend = _c[1];
+                    _c = _e.sent(), friendUser = _c[0], userFriend = _c[1];
                     if (!friendUser)
                         throw new Error("Couldn't create friend user");
                     if (!userFriend)
                         throw new Error("Couldn't create user friend");
-                    return [4 /*yield*/, friendUser.save()];
+                    return [4 /*yield*/, Promise.all([
+                            friendUser.save(),
+                            userFriend.save()
+                        ])];
                 case 3:
-                    friendUserDB = _d.sent();
-                    return [4 /*yield*/, userFriend.save()];
-                case 4:
-                    userFriendDB = _d.sent();
-                    // const friendUser = new UserFriendModel({ user: userDB, friend: friendDB });
-                    // const userFriend = new UserFriendModel({ user: friendDB, friend: userDB });
+                    _d = _e.sent(), friendUserDB = _d[0], userFriendDB = _d[1];
                     res.send({ friendUserDB: friendUserDB });
-                    return [3 /*break*/, 6];
-                case 5: throw new Error("Can't add yourself to friend list");
-                case 6: return [3 /*break*/, 8];
-                case 7:
-                    error_1 = _d.sent();
+                    return [3 /*break*/, 5];
+                case 4: throw new Error("Can't add yourself to friend list");
+                case 5: return [3 /*break*/, 7];
+                case 6:
+                    error_1 = _e.sent();
                     res.send({ error: error_1.message });
-                    return [3 /*break*/, 8];
-                case 8: return [2 /*return*/];
+                    return [3 /*break*/, 7];
+                case 7: return [2 /*return*/];
             }
         });
     });
