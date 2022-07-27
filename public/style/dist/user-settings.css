@@ -237,11 +237,13 @@ body .container .app .main-app .user-container .user-information__content .row i
   outline: none;
 }
 body .container .app .main-app .user-container .user-information__content .row img {
-  cursor: pointer;
   width: 1.5em;
   transition: all 0.3s ease-in-out;
 }
-body .container .app .main-app .user-container .user-information__content .row img:hover {
+body .container .app .main-app .user-container .user-information__content .row #passwordIcon {
+  cursor: pointer;
+}
+body .container .app .main-app .user-container .user-information__content .row #passwordIcon:hover {
   opacity: 0.6;
 }
 body .container .app .main-app .user-container .box-conatiner {

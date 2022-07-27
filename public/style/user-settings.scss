@@ -249,11 +249,13 @@ body {
                                     outline: none;
                                 }
                                 img {
-                                    cursor: pointer;
                                     width: 1.5em;
                                     transition: all .3s ease-in-out;
                                 }
-                                img:hover {
+                                #passwordIcon {
+                                    cursor: pointer;
+                                }
+                                #passwordIcon:hover {
                                     opacity: .6;
                                 }
                             }
