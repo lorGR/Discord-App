@@ -74,7 +74,6 @@ function renderFriends(userFriendArray) {
     try {
         let html = '';
         userFriendArray.forEach(userFriend => {
-            console.log(userFriend.friend.username);
             html += `
                 <div class="friend">
                     <img src="../assets/svgs/user-profile-svgrepo-com.svg">
