@@ -75,13 +75,21 @@ function renderFriends(userFriendArray) {
         let html = '';
         userFriendArray.forEach(userFriend => {
             html += `
-                <div class="friend">
+                <div onclick="handleChatFriend('${userFriend._id}')" class="friend">
                     <img src="../assets/svgs/user-profile-svgrepo-com.svg">
                     <p>${userFriend.friend.username}</p>
                 </div>
             `;
         });
         friendListContainer.innerHTML = html;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function handleChatFriend(userId : string) {
+    try {
+        console.log(`clicked on: ${userId}`);
     } catch (error) {
         console.error(error);
     }
