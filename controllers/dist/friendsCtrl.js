@@ -41,16 +41,21 @@ var userModel_1 = require("../models/userModel");
 var userFriends_1 = require("../models/userFriends");
 function addFriend(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, friendUsername, userDB, friendDB, friendUser, friendUserDB, userFriend, userFriendDB, error_1;
+        var _a, friendUsername, userDB, existFriend, friendDB, friendUser, friendUserDB, userFriend, userFriendDB, error_1;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
-                    _b.trys.push([0, 4, , 5]);
+                    _b.trys.push([0, 5, , 6]);
                     _a = req.body, friendUsername = _a.friendUsername, userDB = _a.userDB;
                     if (!friendUsername || !userDB)
                         throw new Error("Couldn't find friendUsername or UserDB from req.body");
-                    return [4 /*yield*/, userModel_1["default"].findOne({ username: friendUsername })];
+                    return [4 /*yield*/, userFriends_1["default"].find({ 'user._id': userDB._id, 'friend.username': friendUsername })];
                 case 1:
+                    existFriend = _b.sent();
+                    if (existFriend)
+                        throw new Error("You already are friends");
+                    return [4 /*yield*/, userModel_1["default"].findOne({ username: friendUsername })];
+                case 2:
                     friendDB = _b.sent();
                     if (!friendDB)
                         throw new Error("Couldn;t find user with username: " + friendUsername);
@@ -58,21 +63,21 @@ function addFriend(req, res) {
                     if (!friendUser)
                         throw new Error("Couldn't create friend user");
                     return [4 /*yield*/, friendUser.save()];
-                case 2:
+                case 3:
                     friendUserDB = _b.sent();
                     userFriend = new userFriends_1["default"]({ user: friendDB, friend: userDB });
                     if (!userFriend)
                         throw new Error("Couldn't create user friend");
                     return [4 /*yield*/, userFriend.save()];
-                case 3:
+                case 4:
                     userFriendDB = _b.sent();
                     res.send({ friendUserDB: friendUserDB });
-                    return [3 /*break*/, 5];
-                case 4:
+                    return [3 /*break*/, 6];
+                case 5:
                     error_1 = _b.sent();
                     res.send({ error: error_1.message });
-                    return [3 /*break*/, 5];
-                case 5: return [2 /*return*/];
+                    return [3 /*break*/, 6];
+                case 6: return [2 /*return*/];
             }
         });
     });

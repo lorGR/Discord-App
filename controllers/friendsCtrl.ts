@@ -7,6 +7,9 @@ export async function addFriend(req: express.Request, res: express.Response) {
         const { friendUsername, userDB } = req.body;
         if (!friendUsername || !userDB) throw new Error("Couldn't find friendUsername or UserDB from req.body");
 
+        const existFriend = await UserFriendModel.find({ 'user._id': userDB._id, 'friend.username': friendUsername });
+        if (existFriend) throw new Error("You already are friends");
+
         const friendDB = await UserModel.findOne({ username: friendUsername });
         if (!friendDB) throw new Error(`Couldn;t find user with username: ${friendUsername}`);
 
