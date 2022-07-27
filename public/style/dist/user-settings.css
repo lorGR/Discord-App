@@ -187,6 +187,7 @@ body .container .app .main-app .user-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 1em;
   padding: 1em;
 }
