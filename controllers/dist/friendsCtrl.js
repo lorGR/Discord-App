@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,99 +35,73 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-function handleHomePage() {
-    try {
-        window.location.href = "./home.html";
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-function handleAddFriendPage() {
-    try {
-        window.location.href = "./add-friend.html";
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-function handleSettingPage() {
-    try {
-        window.location.href = "./user-setting.html";
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-function handleLoad() {
+exports.__esModule = true;
+exports.getFriends = exports.addFriend = void 0;
+var userModel_1 = require("../models/userModel");
+var userFriends_1 = require("../models/userFriends");
+function addFriend(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            try {
-                handleGetUser();
-                getAllFriends();
+        var _a, friendUsername, userDB, friendDB, friendUser, friendUserDB, userFriend, userFriendDB, error_1;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _b.trys.push([0, 4, , 5]);
+                    _a = req.body, friendUsername = _a.friendUsername, userDB = _a.userDB;
+                    if (!friendUsername || !userDB)
+                        throw new Error("Couldn't find friendUsername or UserDB from req.body");
+                    return [4 /*yield*/, userModel_1["default"].findOne({ username: friendUsername })];
+                case 1:
+                    friendDB = _b.sent();
+                    if (!friendDB)
+                        throw new Error("Couldn;t find user with username: " + friendUsername);
+                    friendUser = new userFriends_1["default"]({ user: userDB, friend: friendDB });
+                    if (!friendUser)
+                        throw new Error("Couldn't create friend user");
+                    return [4 /*yield*/, friendUser.save()];
+                case 2:
+                    friendUserDB = _b.sent();
+                    userFriend = new userFriends_1["default"]({ user: friendDB, friend: userDB });
+                    if (!userFriend)
+                        throw new Error("Couldn't create user friend");
+                    return [4 /*yield*/, userFriend.save()];
+                case 3:
+                    userFriendDB = _b.sent();
+                    res.send({ friendUserDB: friendUserDB });
+                    return [3 /*break*/, 5];
+                case 4:
+                    error_1 = _b.sent();
+                    res.send({ error: error_1.message });
+                    return [3 /*break*/, 5];
+                case 5: return [2 /*return*/];
             }
-            catch (error) {
-                console.error(error);
-            }
-            return [2 /*return*/];
         });
     });
 }
-function handleGetUser() {
+exports.addFriend = addFriend;
+function getFriends(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var data, userDB, error, username, greetUser, error_1;
+        var userDB, userFriendsDB, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, axios.get("/users/get-user")];
+                    userDB = req.body.userDB;
+                    if (!userDB)
+                        throw new Error("Couldn't get userDB from req.body");
+                    return [4 /*yield*/, userFriends_1["default"].find({ 'user._id': userDB._id })];
                 case 1:
-                    data = (_a.sent()).data;
-                    if (!data)
-                        throw new Error("Couldn't recieve data from axios GET: '/users/get-user' ");
-                    userDB = data.userDB, error = data.error;
-                    if (error)
-                        throw error;
-                    username = document.getElementById("usernameBox");
-                    username.innerHTML = userDB.username;
-                    greetUser = document.getElementById("greetingUser");
-                    if (greetUser)
-                        greetUser.innerHTML = "Hello " + userDB.username;
-                    return [2 /*return*/, userDB];
+                    userFriendsDB = _a.sent();
+                    if (!userFriendsDB)
+                        throw new Error("This user doesn't have friends :(");
+                    res.send({ userFriendsDB: userFriendsDB });
+                    return [3 /*break*/, 3];
                 case 2:
-                    error_1 = _a.sent();
-                    console.error(error_1);
+                    error_2 = _a.sent();
+                    res.send({ error: error_2.message });
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
         });
     });
 }
-function getAllFriends() {
-    return __awaiter(this, void 0, void 0, function () {
-        var userDB, data, error_2;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, handleGetUser()];
-                case 1:
-                    userDB = _a.sent();
-                    if (!userDB)
-                        throw new Error("Couldn't get User");
-                    return [4 /*yield*/, axios.post('/friends/get-friends', { userDB: userDB })];
-                case 2:
-                    data = (_a.sent()).data;
-                    if (!data)
-                        throw new Error("Couldn't recieve data from axios POST: '/friends/get-friends' ");
-                    console.log(data);
-                    return [3 /*break*/, 4];
-                case 3:
-                    error_2 = _a.sent();
-                    console.error(error_2);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
-            }
-        });
-    });
-}
+exports.getFriends = getFriends;

@@ -38,6 +38,8 @@ app.use(cookie_parser_1.default());
 app.use(express_1.default.static("public"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 app.use("/users", userRoutes_1.default);
+const friendRoutes_1 = __importDefault(require("./routes/friendRoutes"));
+app.use("/friends", friendRoutes_1.default);
 server.listen(port, () => {
     console.log(`Server is running http://localhost:${port}`);
 });

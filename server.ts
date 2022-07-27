@@ -39,7 +39,10 @@ app.use(express.static("public"));
 
 
 import userRoutes from './routes/userRoutes';
-app.use("/users", userRoutes)
+app.use("/users", userRoutes);
+
+import friendRoutes from './routes/friendRoutes';
+app.use("/friends", friendRoutes);
 
 server.listen(port, () => {
     console.log(`Server is running http://localhost:${port}`);
