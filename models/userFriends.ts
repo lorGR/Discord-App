@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { UserSchema } from "./userModel";
 
 const UserFriendSchema = new mongoose.Schema({
     user: {

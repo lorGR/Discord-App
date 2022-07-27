@@ -73,9 +73,12 @@
                     <img onclick="turn360()" id="logo" src="../assets/images/discord-logo.png" alt="Discord logo">
                     <form onsubmit="handleAddFriend(event)" id="addFriend">
                         <div class="custome-label">
-                            <label for="friendUsername">Username:</label>
-                            <input type="text" id="friendUsername" name="friendUsername" placeholder="e.g giliEllen" autocomplete="off">
-                            <input type="submit" value="Add User">
+                            <span id="errorConatinerAddFriend"></span>
+                            <div class="form-add-user">
+                                <label for="friendUsername">Username:</label>
+                                <input type="text" id="friendUsername" name="friendUsername" placeholder="e.g giliEllen" autocomplete="off">
+                                <input type="submit" value="Add User">
+                            </div>
                         </div>
                     </form>
                     <p>Adding new friends is easy and exciting!</p>

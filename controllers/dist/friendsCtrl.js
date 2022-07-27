@@ -45,10 +45,11 @@ function addFriend(req, res) {
         return __generator(this, function (_d) {
             switch (_d.label) {
                 case 0:
-                    _d.trys.push([0, 5, , 6]);
+                    _d.trys.push([0, 7, , 8]);
                     _a = req.body, friendUsername = _a.friendUsername, userDB = _a.userDB;
                     if (!friendUsername || !userDB)
                         throw new Error("Couldn't find friendUsername or UserDB from req.body");
+                    if (!(friendUsername !== userDB.username)) return [3 /*break*/, 5];
                     return [4 /*yield*/, Promise.all([
                             userModel_1["default"].findOne({ username: friendUsername }),
                             userFriends_1["default"].find({ 'user._id': userDB._id, 'friend.username': friendUsername })
@@ -60,6 +61,7 @@ function addFriend(req, res) {
                         throw new Error("You already are friends");
                     if (!friendDB)
                         throw new Error("Couldn't find user with username: " + friendUsername);
+                    console.log(friendDB);
                     return [4 /*yield*/, Promise.all([
                             new userFriends_1["default"]({ user: userDB, friend: friendDB }),
                             new userFriends_1["default"]({ user: friendDB, friend: userDB })
@@ -80,11 +82,13 @@ function addFriend(req, res) {
                     // const userFriend = new UserFriendModel({ user: friendDB, friend: userDB });
                     res.send({ friendUserDB: friendUserDB });
                     return [3 /*break*/, 6];
-                case 5:
+                case 5: throw new Error("Can't add yourself to friend list");
+                case 6: return [3 /*break*/, 8];
+                case 7:
                     error_1 = _d.sent();
                     res.send({ error: error_1.message });
-                    return [3 /*break*/, 6];
-                case 6: return [2 /*return*/];
+                    return [3 /*break*/, 8];
+                case 8: return [2 /*return*/];
             }
         });
     });

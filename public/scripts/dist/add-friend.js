@@ -34,6 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var errorContainer = document.getElementById("errorConatinerAddFriend");
 function handleAddFriend(event) {
     return __awaiter(this, void 0, void 0, function () {
         var friendUsername, data, userDB, error, data, friendUserDB, error, error_1;
@@ -43,6 +44,7 @@ function handleAddFriend(event) {
                     _a.trys.push([0, 3, , 4]);
                     event.preventDefault();
                     friendUsername = event.target.friendUsername.value;
+                    errorContainer.innerHTML = "";
                     return [4 /*yield*/, axios.get("/users/get-user")];
                 case 1:
                     data = (_a.sent()).data;
@@ -58,8 +60,10 @@ function handleAddFriend(event) {
                     if (!data)
                         throw new Error("Couldn't recieve data from axios POST: '/friends/add-friend' ");
                     friendUserDB = data.friendUserDB, error = data.error;
-                    if (error)
+                    if (error) {
+                        handleErrorsAddFriend(error);
                         throw error;
+                    }
                     console.log(friendUserDB);
                     return [3 /*break*/, 4];
                 case 3:
@@ -70,4 +74,17 @@ function handleAddFriend(event) {
             }
         });
     });
+}
+function handleErrorsAddFriend(error) {
+    try {
+        if (error.includes("Couldn't find user with username:"))
+            errorContainer.innerHTML = "Username doesn't exist";
+        if (error.includes("You already are friends"))
+            errorContainer.innerHTML = "You are already friends";
+        if (error.includes("Can't add yourself to friend list"))
+            errorContainer.innerHTML = "You are already friend with yourself :)";
+    }
+    catch (error) {
+        console.error(error);
+    }
 }

@@ -207,10 +207,14 @@ body .container .app .main-app .add-friend form {
 body .container .app .main-app .add-friend form .custome-label {
   padding: 2em;
   display: flex;
+  flex-direction: column;
   gap: 1em;
   background-color: #474867;
   border-radius: 1em;
   color: #fff;
+}
+body .container .app .main-app .add-friend form .custome-label span {
+  color: red;
 }
 body .container .app .main-app .add-friend form .custome-label input[type=text] {
   color: #fff;

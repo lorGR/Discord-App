@@ -6,31 +6,35 @@ export async function addFriend(req: express.Request, res: express.Response) {
     try {
         const { friendUsername, userDB } = req.body;
         if (!friendUsername || !userDB) throw new Error("Couldn't find friendUsername or UserDB from req.body");
-
-        // const friendDB = await UserModel.findOne({ username: friendUsername })
-        
-        const [friendDB, existFriend] = await Promise.all([
-            UserModel.findOne({ username: friendUsername }),
-            UserFriendModel.find({ 'user._id': userDB._id, 'friend.username': friendUsername })
-        ]);
-
-        // const existFriend = await UserFriendModel.find({ 'user._id': userDB._id, 'friend.username': friendUsername });
-        if (Object.keys(existFriend).length > 0) throw new Error("You already are friends");
-        if (!friendDB) throw new Error(`Couldn't find user with username: ${friendUsername}`);
-        
-        const [friendUser, userFriend ] = await Promise.all([
-            new UserFriendModel({ user: userDB, friend: friendDB }),
-            new UserFriendModel({ user: friendDB, friend: userDB })
-        ]);
-        if (!friendUser) throw new Error("Couldn't create friend user");
-        if (!userFriend) throw new Error("Couldn't create user friend");
-        const friendUserDB = await friendUser.save();
-        const userFriendDB = await userFriend.save();
-
-        // const friendUser = new UserFriendModel({ user: userDB, friend: friendDB });
-        // const userFriend = new UserFriendModel({ user: friendDB, friend: userDB });
-        
-        res.send({ friendUserDB });
+        if (friendUsername !== userDB.username) {
+            // const friendDB = await UserModel.findOne({ username: friendUsername })
+            
+            const [friendDB, existFriend] = await Promise.all([
+                UserModel.findOne({ username: friendUsername }),
+                UserFriendModel.find({ 'user._id': userDB._id, 'friend.username': friendUsername })
+            ]);
+    
+            // const existFriend = await UserFriendModel.find({ 'user._id': userDB._id, 'friend.username': friendUsername });
+            if (Object.keys(existFriend).length > 0) throw new Error("You already are friends");
+            if (!friendDB) throw new Error(`Couldn't find user with username: ${friendUsername}`);
+            console.log(friendDB);
+            
+            const [friendUser, userFriend ] = await Promise.all([
+                new UserFriendModel({ user: userDB, friend: friendDB }),
+                new UserFriendModel({ user: friendDB, friend: userDB })
+            ]);
+            if (!friendUser) throw new Error("Couldn't create friend user");
+            if (!userFriend) throw new Error("Couldn't create user friend");
+            const friendUserDB = await friendUser.save();
+            const userFriendDB = await userFriend.save();
+    
+            // const friendUser = new UserFriendModel({ user: userDB, friend: friendDB });
+            // const userFriend = new UserFriendModel({ user: friendDB, friend: userDB });
+            
+            res.send({ friendUserDB });
+        } else {
+            throw new Error("Can't add yourself to friend list");
+        }
     } catch (error) {
         res.send({ error: error.message });
     }
