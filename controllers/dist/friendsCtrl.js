@@ -41,40 +41,47 @@ var userModel_1 = require("../models/userModel");
 var userFriends_1 = require("../models/userFriends");
 function addFriend(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, friendUsername, userDB, existFriend, friendDB, friendUser, friendUserDB, userFriend, userFriendDB, error_1;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
+        var _a, friendUsername, userDB, _b, friendDB, existFriend, _c, friendUser, userFriend, friendUserDB, userFriendDB, error_1;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
                 case 0:
-                    _b.trys.push([0, 5, , 6]);
+                    _d.trys.push([0, 5, , 6]);
                     _a = req.body, friendUsername = _a.friendUsername, userDB = _a.userDB;
                     if (!friendUsername || !userDB)
                         throw new Error("Couldn't find friendUsername or UserDB from req.body");
-                    return [4 /*yield*/, userFriends_1["default"].find({ 'user._id': userDB._id, 'friend.username': friendUsername })];
+                    return [4 /*yield*/, Promise.all([
+                            userModel_1["default"].findOne({ username: friendUsername }),
+                            userFriends_1["default"].find({ 'user._id': userDB._id, 'friend.username': friendUsername })
+                        ])];
                 case 1:
-                    existFriend = _b.sent();
-                    if (existFriend)
+                    _b = _d.sent(), friendDB = _b[0], existFriend = _b[1];
+                    // const existFriend = await UserFriendModel.find({ 'user._id': userDB._id, 'friend.username': friendUsername });
+                    if (Object.keys(existFriend).length > 0)
                         throw new Error("You already are friends");
-                    return [4 /*yield*/, userModel_1["default"].findOne({ username: friendUsername })];
-                case 2:
-                    friendDB = _b.sent();
                     if (!friendDB)
-                        throw new Error("Couldn;t find user with username: " + friendUsername);
-                    friendUser = new userFriends_1["default"]({ user: userDB, friend: friendDB });
+                        throw new Error("Couldn't find user with username: " + friendUsername);
+                    return [4 /*yield*/, Promise.all([
+                            new userFriends_1["default"]({ user: userDB, friend: friendDB }),
+                            new userFriends_1["default"]({ user: friendDB, friend: userDB })
+                        ])];
+                case 2:
+                    _c = _d.sent(), friendUser = _c[0], userFriend = _c[1];
                     if (!friendUser)
                         throw new Error("Couldn't create friend user");
-                    return [4 /*yield*/, friendUser.save()];
-                case 3:
-                    friendUserDB = _b.sent();
-                    userFriend = new userFriends_1["default"]({ user: friendDB, friend: userDB });
                     if (!userFriend)
                         throw new Error("Couldn't create user friend");
+                    return [4 /*yield*/, friendUser.save()];
+                case 3:
+                    friendUserDB = _d.sent();
                     return [4 /*yield*/, userFriend.save()];
                 case 4:
-                    userFriendDB = _b.sent();
+                    userFriendDB = _d.sent();
+                    // const friendUser = new UserFriendModel({ user: userDB, friend: friendDB });
+                    // const userFriend = new UserFriendModel({ user: friendDB, friend: userDB });
                     res.send({ friendUserDB: friendUserDB });
                     return [3 /*break*/, 6];
                 case 5:
-                    error_1 = _b.sent();
+                    error_1 = _d.sent();
                     res.send({ error: error_1.message });
                     return [3 /*break*/, 6];
                 case 6: return [2 /*return*/];

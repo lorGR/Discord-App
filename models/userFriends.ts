@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
-import Joi from "joi";
-import UserModel from "./userModel";
+import { UserSchema } from "./userModel";
 
 const UserFriendSchema = new mongoose.Schema({
     user: {
+        // Create new Schema instead of Object ,a simple Schema of UserModel
         type: Object,
         required: true
     },
     friend: {
+        // Create new Schema instead of Object ,a simple Schema of UserModel
         type : Object,
         required: true
     }

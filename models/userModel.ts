@@ -4,7 +4,7 @@ import { joiPasswordExtendCore } from 'joi-password';
 
 const joiPassword = Joi.extend(joiPasswordExtendCore);
 
-const UserSchema = new mongoose.Schema({
+export const UserSchema = new mongoose.Schema({
     email: {
         type: String,
         unique: true,
