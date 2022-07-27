@@ -132,8 +132,16 @@ body .container .app .friends-list__friends {
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 1em 0;
+}
+body .container .app .friends-list__friends__list .friend {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+body .container .app .friends-list__friends__list .friend img {
+  width: 2em;
 }
 body .container .app .friends-list__friends__add button {
   cursor: pointer;

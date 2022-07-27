@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const UserFriendSchema = new mongoose.Schema({
+export const UserFriendSchema = new mongoose.Schema({
     user: {
         // Create new Schema instead of Object ,a simple Schema of UserModel
         type: Object,

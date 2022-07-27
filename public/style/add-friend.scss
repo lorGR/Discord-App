@@ -152,10 +152,19 @@ body {
                     height: 100%;
                     flex-direction: column;
                     justify-content: space-between;
-                    align-items: center;
+                    align-items: flex-start;
                     padding: 1em 0;
 
-                    &__list {}
+                    &__list {
+                        .friend {
+                            display: flex;
+                            align-items: center;
+                            gap: .5em;
+                            img {
+                                width: 2em;
+                            }
+                        }
+                    }
 
                     &__add {
                         button {

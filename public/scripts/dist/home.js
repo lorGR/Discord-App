@@ -34,6 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var friendListContainer = document.getElementById("friendListContainer");
 function handleHomePage() {
     try {
         window.location.href = "./home.html";
@@ -104,7 +105,7 @@ function handleGetUser() {
 }
 function getAllFriends() {
     return __awaiter(this, void 0, void 0, function () {
-        var userDB, data, error_2;
+        var userDB, data, userFriendsDB, error, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -119,7 +120,10 @@ function getAllFriends() {
                     data = (_a.sent()).data;
                     if (!data)
                         throw new Error("Couldn't recieve data from axios POST: '/friends/get-friends' ");
-                    console.log(data);
+                    userFriendsDB = data.userFriendsDB, error = data.error;
+                    if (error)
+                        throw error;
+                    renderFriends(userFriendsDB);
                     return [3 /*break*/, 4];
                 case 3:
                     error_2 = _a.sent();
@@ -129,4 +133,17 @@ function getAllFriends() {
             }
         });
     });
+}
+function renderFriends(userFriendArray) {
+    try {
+        var html_1 = '';
+        userFriendArray.forEach(function (userFriend) {
+            console.log(userFriend.friend.username);
+            html_1 += "\n                <div class=\"friend\">\n                    <img src=\"../assets/svgs/user-profile-svgrepo-com.svg\">\n                    <p>" + userFriend.friend.username + "</p>\n                </div>\n            ";
+        });
+        friendListContainer.innerHTML = html_1;
+    }
+    catch (error) {
+        console.error(error);
+    }
 }

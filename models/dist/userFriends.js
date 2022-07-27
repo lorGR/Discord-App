@@ -1,7 +1,8 @@
 "use strict";
 exports.__esModule = true;
+exports.UserFriendSchema = void 0;
 var mongoose_1 = require("mongoose");
-var UserFriendSchema = new mongoose_1["default"].Schema({
+exports.UserFriendSchema = new mongoose_1["default"].Schema({
     user: {
         // Create new Schema instead of Object ,a simple Schema of UserModel
         type: Object,
@@ -13,5 +14,5 @@ var UserFriendSchema = new mongoose_1["default"].Schema({
         required: true
     }
 });
-var UserFriendModel = mongoose_1["default"].model('UserFriend', UserFriendSchema);
+var UserFriendModel = mongoose_1["default"].model('UserFriend', exports.UserFriendSchema);
 exports["default"] = UserFriendModel;

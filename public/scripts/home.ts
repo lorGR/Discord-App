@@ -1,3 +1,5 @@
+const friendListContainer = document.getElementById("friendListContainer") as HTMLDivElement;
+
 function handleHomePage() {
     try {
         window.location.href = "./home.html";
@@ -59,8 +61,28 @@ async function getAllFriends() {
         //@ts-ignore
         const { data } = await axios.post('/friends/get-friends', { userDB });
         if (!data) throw new Error("Couldn't recieve data from axios POST: '/friends/get-friends' ");
-        console.log(data);
+        const { userFriendsDB, error} = data;
+        if (error) throw error;
+        renderFriends(userFriendsDB);
 
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function renderFriends(userFriendArray) {
+    try {
+        let html = '';
+        userFriendArray.forEach(userFriend => {
+            console.log(userFriend.friend.username);
+            html += `
+                <div class="friend">
+                    <img src="../assets/svgs/user-profile-svgrepo-com.svg">
+                    <p>${userFriend.friend.username}</p>
+                </div>
+            `;
+        });
+        friendListContainer.innerHTML = html;
     } catch (error) {
         console.error(error);
     }
