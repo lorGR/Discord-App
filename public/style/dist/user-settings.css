@@ -187,15 +187,29 @@ body .container .app .main-app .user-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1em;
   border: 2px solid yellow;
 }
-body .container .app .main-app .user-container img {
+body .container .app .main-app .user-container #logo {
   cursor: pointer;
   width: 20%;
   border: 2px solid #6666f8;
   border-radius: 50%;
   transition: all 0.3s ease-in-out;
 }
-body .container .app .main-app .user-container img:hover {
+body .container .app .main-app .user-container #logo:hover {
   background-color: #fff;
+}
+body .container .app .main-app .user-container .user-information {
+  display: flex;
+  flex-direction: column;
+}
+body .container .app .main-app .user-container .user-information__title {
+  display: flex;
+  border: 2px solid green;
+  gap: 1em;
+  justify-content: center;
+}
+body .container .app .main-app .user-container .user-information__title img {
+  width: 3%;
 }
