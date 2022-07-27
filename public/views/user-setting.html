@@ -71,13 +71,27 @@
             <section class="main-app">
                 <div class="user-container">
                     <img onclick="turn360()" id="logo" src="../assets/images/discord-logo.png" alt="Discord logo">
-                    <div class="user-information">
+                    <div class="user-information box-conatiner">
                         <div class="user-information__title">
                             <img src="../assets/svgs/setting-svgrepo-com.svg" alt="setting icon">
                             <h1>User Settings</h1>
                         </div>
                         <div class="user-information__content">
-                            
+                            <div class="row">
+                                <label for="usenameSetting">Username:</label>
+                                <input id="usenameSetting" type="email" value="lior" readonly="readonly">
+                                <img src="../assets/svgs/user-svgrepo-com-2.svg" alt="user-profile-icon">
+                            </div>
+                            <div class="row">
+                                <label for="emailSetting">Email:</label>
+                                <input id="emailSetting" type="text" value="lior@lior.com" readonly="readonly">
+                                <img src="../assets/svgs/email-svgrepo-com.svg" alt="email-icon">
+                            </div>
+                            <div class="row">
+                                <label for="passwordSetting">Password:</label>
+                                <input id="passwordSetting" type="password" value="password" readonly="readonly">
+                                <img onclick="handleVisiblePassword()" id="passwordIcon" src="../assets/svgs/password-svgrepo-com.svg" alt="password-icon">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -86,5 +100,6 @@
     </div>
     <script src="../scripts/dist/index.js"></script>
     <script src="../scripts/dist/home.js"></script>
+    <script src="../scripts/dist/user-settings.js"></script>
 </body>
 </html>

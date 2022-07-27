@@ -188,7 +188,7 @@ body .container .app .main-app .user-container {
   flex-direction: column;
   align-items: center;
   gap: 1em;
-  border: 2px solid yellow;
+  padding: 1em;
 }
 body .container .app .main-app .user-container #logo {
   cursor: pointer;
@@ -203,13 +203,47 @@ body .container .app .main-app .user-container #logo:hover {
 body .container .app .main-app .user-container .user-information {
   display: flex;
   flex-direction: column;
+  padding: 1em;
+  background-color: #474867;
+  border-radius: 1em;
 }
 body .container .app .main-app .user-container .user-information__title {
   display: flex;
-  border: 2px solid green;
   gap: 1em;
   justify-content: center;
 }
 body .container .app .main-app .user-container .user-information__title img {
-  width: 3%;
+  width: 6%;
+}
+body .container .app .main-app .user-container .user-information__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+}
+body .container .app .main-app .user-container .user-information__content .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+body .container .app .main-app .user-container .user-information__content .row input {
+  color: #fff;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #fff;
+  background-color: #474867;
+}
+body .container .app .main-app .user-container .user-information__content .row input:focus-within {
+  outline: none;
+}
+body .container .app .main-app .user-container .user-information__content .row img {
+  cursor: pointer;
+  width: 1.5em;
+  transition: all 0.3s ease-in-out;
+}
+body .container .app .main-app .user-container .user-information__content .row img:hover {
+  opacity: 0.6;
+}
+body .container .app .main-app .user-container .box-conatiner {
+  width: 50%;
 }
