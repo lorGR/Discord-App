@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getFriends = exports.addFriend = void 0;
+exports.deleteFriend = exports.getFriends = exports.addFriend = void 0;
 var userModel_1 = require("../models/userModel");
 var userFriends_1 = require("../models/userFriends");
 function addFriend(req, res) {
@@ -118,3 +118,19 @@ function getFriends(req, res) {
     });
 }
 exports.getFriends = getFriends;
+function deleteFriend(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var _a, userId, username;
+        return __generator(this, function (_b) {
+            try {
+                _a = req.body, userId = _a.userId, username = _a.username;
+                console.log(userId, username);
+            }
+            catch (error) {
+                res.send({ error: error.message });
+            }
+            return [2 /*return*/];
+        });
+    });
+}
+exports.deleteFriend = deleteFriend;

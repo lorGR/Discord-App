@@ -135,26 +135,6 @@ function getAllFriends() {
         });
     });
 }
-function renderFriends(userFriendArray) {
-    try {
-        var html_1 = '';
-        userFriendArray.forEach(function (userFriend) {
-            html_1 += "\n                <div class=\"friend\">\n                    <div onclick=\"handleChatFriend('" + userFriend._id + "')\" class=\"right\">\n                        <img src=\"../assets/svgs/user-profile-svgrepo-com.svg\">\n                        <p>" + userFriend.friend.username + "</p>\n                    </div>\n                    <div onclick=\"handleDeleteFriend('" + userFriend._id + "')\" class=\"left\">\n                        <img src=\"../assets/svgs/trash-svgrepo-com.svg\">\n                    </div>\n                </div>\n            ";
-        });
-        friendListContainer.innerHTML = html_1;
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-function handleChatFriend(userId) {
-    try {
-        console.log("clicked on: " + userId);
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
 function renderUserSettings() {
     return __awaiter(this, void 0, void 0, function () {
         var userDB, usernameInput, emailInput, passwordInput, error_3;
@@ -178,6 +158,54 @@ function renderUserSettings() {
                     console.error(error_3);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+function renderFriends(userFriendArray) {
+    try {
+        var html_1 = '';
+        userFriendArray.forEach(function (userFriend) {
+            html_1 += "\n                <div class=\"friend\">\n                    <div onclick=\"handleChatFriend('" + userFriend._id + "')\" class=\"right\">\n                        <img src=\"../assets/svgs/user-profile-svgrepo-com.svg\">\n                        <p>" + userFriend.friend.username + "</p>\n                    </div>\n                    <div onclick=\"handleDeleteFriend('" + userFriend._id + "')\" class=\"left\">\n                        <img src=\"../assets/svgs/trash-svgrepo-com.svg\">\n                    </div>\n                </div>\n            ";
+        });
+        friendListContainer.innerHTML = html_1;
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+function handleChatFriend(userId) {
+    try {
+        console.log("clicked on: " + userId);
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+function handleDeleteFriend(userId) {
+    return __awaiter(this, void 0, void 0, function () {
+        var userDB, username, data, error_4;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, handleGetUser()];
+                case 1:
+                    userDB = _a.sent();
+                    username = userDB.username;
+                    console.log('Clicked trash icon');
+                    return [4 /*yield*/, axios["delete"]("/friends/delete-friend", { data: { userId: userId, username: username } })];
+                case 2:
+                    data = (_a.sent()).data;
+                    if (!data)
+                        throw new Error("Coulnd't recieve data from axios DELETE: '/users/delete-friend' ");
+                    console.log(data);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_4 = _a.sent();
+                    console.error(error_4);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     });

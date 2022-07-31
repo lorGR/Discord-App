@@ -62,9 +62,25 @@ async function getAllFriends() {
         //@ts-ignore
         const { data } = await axios.post('/friends/get-friends', { userDB });
         if (!data) throw new Error("Couldn't recieve data from axios POST: '/friends/get-friends' ");
-        const { userFriendsDB, error} = data;
+        const { userFriendsDB, error } = data;
         if (error) throw error;
         renderFriends(userFriendsDB);
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function renderUserSettings() {
+    try {
+        const userDB = await handleGetUser();
+        console.log(userDB);
+        const usernameInput = document.getElementById("usenameSetting") as HTMLInputElement;
+        const emailInput = document.getElementById("emailSetting") as HTMLInputElement;
+        const passwordInput = document.getElementById("passwordSetting") as HTMLInputElement;
+        usernameInput.value = `${userDB.username}`;
+        emailInput.value = `${userDB.email}`;
+        passwordInput.value = `${userDB.password}`;
 
     } catch (error) {
         console.error(error);
@@ -93,7 +109,7 @@ function renderFriends(userFriendArray) {
     }
 }
 
-function handleChatFriend(userId : string) {
+function handleChatFriend(userId: string) {
     try {
         console.log(`clicked on: ${userId}`);
     } catch (error) {
@@ -101,18 +117,18 @@ function handleChatFriend(userId : string) {
     }
 }
 
-async function renderUserSettings() {
+async function handleDeleteFriend(userId: string) {
     try {
         const userDB = await handleGetUser();
-        console.log(userDB);
-        const usernameInput = document.getElementById("usenameSetting") as HTMLInputElement;
-        const emailInput = document.getElementById("emailSetting") as HTMLInputElement;
-        const passwordInput = document.getElementById("passwordSetting") as HTMLInputElement;
-        usernameInput.value = `${userDB.username}`;
-        emailInput.value = `${userDB.email}`;
-        passwordInput.value = `${userDB.password}`;
+        const { username } = userDB;
+        console.log('Clicked trash icon');
+        //@ts-ignore
+        const { data } = await axios.delete("/friends/delete-friend", {data: { userId, username }});
+        if (!data) throw new Error("Coulnd't recieve data from axios DELETE: '/users/delete-friend' ");
+        console.log(data);
 
     } catch (error) {
         console.error(error);
     }
 }
+

@@ -53,3 +53,13 @@ export async function getFriends(req: express.Request, res: express.Response) {
         res.send({ error: error.message });
     }
 }
+
+export async function deleteFriend (req: express.Request, res: express.Response) {
+    try {
+        const { userId, username } = req.body;
+        console.log(userId, username);
+
+    } catch (error) {
+        res.send ({ error: error.message });
+    }
+}
