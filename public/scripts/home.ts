@@ -76,9 +76,13 @@ function renderFriends(userFriendArray) {
         userFriendArray.forEach(userFriend => {
             html += `
                 <div onclick="handleChatFriend('${userFriend._id}')" class="friend">
-                    <img src="../assets/svgs/user-profile-svgrepo-com.svg">
-                    <p>${userFriend.friend.username}</p>
-                    
+                    <div class="right">
+                        <img src="../assets/svgs/user-profile-svgrepo-com.svg">
+                        <p>${userFriend.friend.username}</p>
+                    </div>
+                    <div class="left">
+                        <img src="../assets/svgs/trash-svgrepo-com.svg">
+                    </div>
                 </div>
             `;
         });

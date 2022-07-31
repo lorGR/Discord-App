@@ -135,13 +135,32 @@ body .container .app .friends-list__friends {
   align-items: flex-start;
   padding: 1em 0;
 }
+body .container .app .friends-list__friends__list {
+  width: 100%;
+}
 body .container .app .friends-list__friends__list .friend {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  border: 2px solid #2c3248;
+  padding: 0.25em 0.25em;
+  cursor: pointer;
+}
+body .container .app .friends-list__friends__list .friend .right {
+  display: flex;
   gap: 0.5em;
 }
 body .container .app .friends-list__friends__list .friend img {
   width: 2em;
+}
+body .container .app .friends-list__friends__list .friend .left img {
+  width: 1.5rem;
+}
+body .container .app .friends-list__friends__list .friend:hover {
+  background-color: #474867;
+  border: 2px solid #6666f8;
+  border-radius: 1rem;
 }
 body .container .app .friends-list__friends__add button {
   cursor: pointer;
