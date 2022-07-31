@@ -28,6 +28,7 @@ async function handleLoad() {
     try {
         handleGetUser();
         getAllFriends();
+        renderUserSettings();
     } catch (error) {
         console.error(error);
     }
@@ -95,6 +96,22 @@ function renderFriends(userFriendArray) {
 function handleChatFriend(userId : string) {
     try {
         console.log(`clicked on: ${userId}`);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function renderUserSettings() {
+    try {
+        const userDB = await handleGetUser();
+        console.log(userDB);
+        const usernameInput = document.getElementById("usenameSetting") as HTMLInputElement;
+        const emailInput = document.getElementById("emailSetting") as HTMLInputElement;
+        const passwordInput = document.getElementById("passwordSetting") as HTMLInputElement;
+        usernameInput.value = `${userDB.username}`;
+        emailInput.value = `${userDB.email}`;
+        passwordInput.value = `${userDB.password}`;
+
     } catch (error) {
         console.error(error);
     }

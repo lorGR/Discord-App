@@ -11,7 +11,6 @@ async function handleAddFriend(event) {
         //@ts-ignore
         const { userDB, error } = data;
         if (error) throw error;
-        console.log(userDB);
 
         // @ts-ignore
         const { data } = await axios.post("/friends/add-friend", { friendUsername, userDB });
@@ -22,7 +21,7 @@ async function handleAddFriend(event) {
             handleErrorsAddFriend(error);
             throw error;
         } 
-        console.log(friendUserDB);
+        location.reload();
     } catch (error) {
         console.error(error);
     }

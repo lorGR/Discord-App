@@ -65,6 +65,7 @@ function handleLoad() {
             try {
                 handleGetUser();
                 getAllFriends();
+                renderUserSettings();
             }
             catch (error) {
                 console.error(error);
@@ -153,4 +154,31 @@ function handleChatFriend(userId) {
     catch (error) {
         console.error(error);
     }
+}
+function renderUserSettings() {
+    return __awaiter(this, void 0, void 0, function () {
+        var userDB, usernameInput, emailInput, passwordInput, error_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, handleGetUser()];
+                case 1:
+                    userDB = _a.sent();
+                    console.log(userDB);
+                    usernameInput = document.getElementById("usenameSetting");
+                    emailInput = document.getElementById("emailSetting");
+                    passwordInput = document.getElementById("passwordSetting");
+                    usernameInput.value = "" + userDB.username;
+                    emailInput.value = "" + userDB.email;
+                    passwordInput.value = "" + userDB.password;
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_3 = _a.sent();
+                    console.error(error_3);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
 }

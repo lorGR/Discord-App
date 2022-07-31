@@ -53,7 +53,6 @@ function handleAddFriend(event) {
                     userDB = data.userDB, error = data.error;
                     if (error)
                         throw error;
-                    console.log(userDB);
                     return [4 /*yield*/, axios.post("/friends/add-friend", { friendUsername: friendUsername, userDB: userDB })];
                 case 2:
                     data = (_a.sent()).data;
@@ -64,7 +63,7 @@ function handleAddFriend(event) {
                         handleErrorsAddFriend(error);
                         throw error;
                     }
-                    console.log(friendUserDB);
+                    location.reload();
                     return [3 /*break*/, 4];
                 case 3:
                     error_1 = _a.sent();
