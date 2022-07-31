@@ -138,7 +138,7 @@ function renderFriends(userFriendArray) {
     try {
         var html_1 = '';
         userFriendArray.forEach(function (userFriend) {
-            html_1 += "\n                <div onclick=\"handleChatFriend('" + userFriend._id + "')\" class=\"friend\">\n                    <img src=\"../assets/svgs/user-profile-svgrepo-com.svg\">\n                    <p>" + userFriend.friend.username + "</p>\n                </div>\n            ";
+            html_1 += "\n                <div onclick=\"handleChatFriend('" + userFriend._id + "')\" class=\"friend\">\n                    <img src=\"../assets/svgs/user-profile-svgrepo-com.svg\">\n                    <p>" + userFriend.friend.username + "</p>\n                    \n                </div>\n            ";
         });
         friendListContainer.innerHTML = html_1;
     }

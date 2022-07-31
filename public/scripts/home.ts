@@ -78,6 +78,7 @@ function renderFriends(userFriendArray) {
                 <div onclick="handleChatFriend('${userFriend._id}')" class="friend">
                     <img src="../assets/svgs/user-profile-svgrepo-com.svg">
                     <p>${userFriend.friend.username}</p>
+                    
                 </div>
             `;
         });
