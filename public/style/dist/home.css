@@ -146,6 +146,7 @@ body .container .app .friends-list__friends__list .friend {
   border: 2px solid #2c3248;
   padding: 0.25em 0.25em;
   cursor: pointer;
+  transition: all 0.25s ease-in-out;
 }
 body .container .app .friends-list__friends__list .friend .right {
   display: flex;

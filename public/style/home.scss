@@ -149,6 +149,7 @@ body {
                             border: 2px solid #2c3248;
                             padding: .25em .25em;
                             cursor: pointer;
+                            transition: all .25s ease-in-out;
                             .right {
                                 display: flex;
                                 gap: .5em;
