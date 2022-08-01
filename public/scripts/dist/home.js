@@ -165,8 +165,9 @@ function renderUserSettings() {
 function renderFriends(userFriendArray) {
     try {
         var html_1 = '';
+        console.log(userFriendArray);
         userFriendArray.forEach(function (userFriend) {
-            html_1 += "\n                <div class=\"friend\">\n                    <div onclick=\"handleChatFriend('" + userFriend._id + "')\" class=\"right\">\n                        <img src=\"../assets/svgs/user-profile-svgrepo-com.svg\">\n                        <p>" + userFriend.friend.username + "</p>\n                    </div>\n                    <div onclick=\"handleDeleteFriend('" + userFriend._id + "')\" class=\"left\">\n                        <img src=\"../assets/svgs/trash-svgrepo-com.svg\">\n                    </div>\n                </div>\n            ";
+            html_1 += "\n                <div class=\"friend\">\n                    <div onclick=\"handleChatFriend('" + userFriend.friend._id + "')\" class=\"right\">\n                        <img src=\"../assets/svgs/user-profile-svgrepo-com.svg\">\n                        <p>" + userFriend.friend.username + "</p>\n                    </div>\n                    <div onclick=\"handleDeleteFriend('" + userFriend.friend.username + "')\" class=\"left\">\n                        <img src=\"../assets/svgs/trash-svgrepo-com.svg\">\n                    </div>\n                </div>\n            ";
         });
         friendListContainer.innerHTML = html_1;
     }
@@ -182,7 +183,7 @@ function handleChatFriend(userId) {
         console.error(error);
     }
 }
-function handleDeleteFriend(userId) {
+function handleDeleteFriend(friendUsername) {
     return __awaiter(this, void 0, void 0, function () {
         var userDB, username, data, error_4;
         return __generator(this, function (_a) {
@@ -194,7 +195,7 @@ function handleDeleteFriend(userId) {
                     userDB = _a.sent();
                     username = userDB.username;
                     console.log('Clicked trash icon');
-                    return [4 /*yield*/, axios["delete"]("/friends/delete-friend", { data: { userId: userId, username: username } })];
+                    return [4 /*yield*/, axios["delete"]("/friends/delete-friend", { data: { friendUsername: friendUsername, username: username } })];
                 case 2:
                     data = (_a.sent()).data;
                     if (!data)

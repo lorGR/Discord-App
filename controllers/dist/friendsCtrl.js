@@ -120,11 +120,16 @@ function getFriends(req, res) {
 exports.getFriends = getFriends;
 function deleteFriend(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, userId, username;
+        var _a, friendUsername, username;
         return __generator(this, function (_b) {
             try {
-                _a = req.body, userId = _a.userId, username = _a.username;
-                console.log(userId, username);
+                _a = req.body, friendUsername = _a.friendUsername, username = _a.username;
+                console.log(friendUsername, username);
+                // const userDB = await UserFriendModel.find({ 'friend.username': friendUsername, 'user.username': username });
+                // if (!userDB) throw new Error(`Couldn't find friend user with username: ${friendUsername}, at friends list of ${username}`);
+                // const friendDB = await UserFriendModel.find({ 'friend.username': username, 'user.username': friendUsername});
+                // if (!friendDB) throw new Error(`Couldn't find friend user with username: ${username}, at friends list of ${friendUsername}`);
+                // res.send({ userDB, friendDB });
             }
             catch (error) {
                 res.send({ error: error.message });

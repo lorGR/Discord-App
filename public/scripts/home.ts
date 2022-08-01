@@ -90,14 +90,15 @@ async function renderUserSettings() {
 function renderFriends(userFriendArray) {
     try {
         let html = '';
+        console.log(userFriendArray);
         userFriendArray.forEach(userFriend => {
             html += `
                 <div class="friend">
-                    <div onclick="handleChatFriend('${userFriend._id}')" class="right">
+                    <div onclick="handleChatFriend('${userFriend.friend._id}')" class="right">
                         <img src="../assets/svgs/user-profile-svgrepo-com.svg">
                         <p>${userFriend.friend.username}</p>
                     </div>
-                    <div onclick="handleDeleteFriend('${userFriend._id}')" class="left">
+                    <div onclick="handleDeleteFriend('${userFriend.friend.username}')" class="left">
                         <img src="../assets/svgs/trash-svgrepo-com.svg">
                     </div>
                 </div>
@@ -117,13 +118,13 @@ function handleChatFriend(userId: string) {
     }
 }
 
-async function handleDeleteFriend(userId: string) {
+async function handleDeleteFriend(friendUsername: string) {
     try {
         const userDB = await handleGetUser();
         const { username } = userDB;
         console.log('Clicked trash icon');
         //@ts-ignore
-        const { data } = await axios.delete("/friends/delete-friend", {data: { userId, username }});
+        const { data } = await axios.delete("/friends/delete-friend", {data: { friendUsername, username }});
         if (!data) throw new Error("Coulnd't recieve data from axios DELETE: '/users/delete-friend' ");
         console.log(data);
 
