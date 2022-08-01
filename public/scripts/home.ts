@@ -126,7 +126,11 @@ async function handleDeleteFriend(friendUsername: string) {
         //@ts-ignore
         const { data } = await axios.delete("/friends/delete-friend", {data: { friendUsername, username }});
         if (!data) throw new Error("Coulnd't recieve data from axios DELETE: '/users/delete-friend' ");
-        console.log(data);
+        const { succses, error } = data;
+        if (error) throw error;
+        if (succses) {
+            location.reload();
+        }
 
     } catch (error) {
         console.error(error);

@@ -120,21 +120,34 @@ function getFriends(req, res) {
 exports.getFriends = getFriends;
 function deleteFriend(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, friendUsername, username;
-        return __generator(this, function (_b) {
-            try {
-                _a = req.body, friendUsername = _a.friendUsername, username = _a.username;
-                console.log(friendUsername, username);
-                // const userDB = await UserFriendModel.find({ 'friend.username': friendUsername, 'user.username': username });
-                // if (!userDB) throw new Error(`Couldn't find friend user with username: ${friendUsername}, at friends list of ${username}`);
-                // const friendDB = await UserFriendModel.find({ 'friend.username': username, 'user.username': friendUsername});
-                // if (!friendDB) throw new Error(`Couldn't find friend user with username: ${username}, at friends list of ${friendUsername}`);
-                // res.send({ userDB, friendDB });
+        var _a, friendUsername, username, _b, error_3;
+        return __generator(this, function (_c) {
+            switch (_c.label) {
+                case 0:
+                    _c.trys.push([0, 4, , 5]);
+                    _a = req.body, friendUsername = _a.friendUsername, username = _a.username;
+                    return [4 /*yield*/, userFriends_1["default"].deleteOne({ 'friend.username': friendUsername, 'user.username': username })];
+                case 1:
+                    _b = (_c.sent());
+                    if (!_b) return [3 /*break*/, 3];
+                    return [4 /*yield*/, userFriends_1["default"].deleteOne({ 'friend.username': username, 'user.username': friendUsername })];
+                case 2:
+                    _b = (_c.sent());
+                    _c.label = 3;
+                case 3:
+                    if (_b) {
+                        res.send({ 'succses': true });
+                    }
+                    else {
+                        res.send({ 'succses': false });
+                    }
+                    return [3 /*break*/, 5];
+                case 4:
+                    error_3 = _c.sent();
+                    res.send({ error: error_3.message });
+                    return [3 /*break*/, 5];
+                case 5: return [2 /*return*/];
             }
-            catch (error) {
-                res.send({ error: error.message });
-            }
-            return [2 /*return*/];
         });
     });
 }

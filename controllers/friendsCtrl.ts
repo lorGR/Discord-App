@@ -57,17 +57,17 @@ export async function getFriends(req: express.Request, res: express.Response) {
 export async function deleteFriend (req: express.Request, res: express.Response) {
     try {
         const { friendUsername, username } = req.body;
-        console.log(friendUsername, username);
 
-        // const userDB = await UserFriendModel.find({ 'friend.username': friendUsername, 'user.username': username });
-        // if (!userDB) throw new Error(`Couldn't find friend user with username: ${friendUsername}, at friends list of ${username}`);
-        
-        // const friendDB = await UserFriendModel.find({ 'friend.username': username, 'user.username': friendUsername});
-        // if (!friendDB) throw new Error(`Couldn't find friend user with username: ${username}, at friends list of ${friendUsername}`);
-
-        // res.send({ userDB, friendDB });
-
-    } catch (error) {
+        if 
+            (
+                await UserFriendModel.deleteOne({ 'friend.username': friendUsername, 'user.username': username }) &&
+                await UserFriendModel.deleteOne({ 'friend.username': username, 'user.username': friendUsername })
+            ) {
+                res.send({ 'succses': true });
+            } else {
+                res.send ( { 'succses': false });
+            }
+        } catch (error) {
         res.send ({ error: error.message });
     }
 }

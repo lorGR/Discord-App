@@ -185,7 +185,7 @@ function handleChatFriend(userId) {
 }
 function handleDeleteFriend(friendUsername) {
     return __awaiter(this, void 0, void 0, function () {
-        var userDB, username, data, error_4;
+        var userDB, username, data, succses, error, error_4;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -200,7 +200,12 @@ function handleDeleteFriend(friendUsername) {
                     data = (_a.sent()).data;
                     if (!data)
                         throw new Error("Coulnd't recieve data from axios DELETE: '/users/delete-friend' ");
-                    console.log(data);
+                    succses = data.succses, error = data.error;
+                    if (error)
+                        throw error;
+                    if (succses) {
+                        location.reload();
+                    }
                     return [3 /*break*/, 4];
                 case 3:
                     error_4 = _a.sent();
