@@ -34,9 +34,6 @@ else {
     console.log("Couldn't find mongodb_uri");
 }
 io.on("connection", (socket) => __awaiter(void 0, void 0, void 0, function* () {
-    const sockets = yield io.fetchSockets();
-    sockets.forEach((socket) => {
-    });
     socket.on("checkRoomId", (roomId) => {
         socket.join(roomId);
     });

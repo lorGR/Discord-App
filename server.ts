@@ -23,10 +23,6 @@ if(mongodb_uri) {
 }
 
 io.on("connection", async (socket) => {
-    const sockets = await io.fetchSockets();
-    sockets.forEach((socket) => {
-
-    });
     socket.on("checkRoomId", (roomId) => {
         socket.join(roomId); 
     })
