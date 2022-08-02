@@ -276,6 +276,21 @@ body {
                         input[type=text]:focus {
                             outline: none;
                         }
+                        input[type=submit] {
+                            color: #fff;
+                            border: none;
+                            border: 2px solid #6666f8;
+                            border-radius: 1em;
+                            padding: .25em 1em;
+                            background-color: #474867;
+                            cursor: pointer;
+                            transition: all 0.35s ease-in-out;
+                        }
+                        input[type=submit]:hover {
+                            color: #6666f8;
+                            background-color: #fff;
+
+                        }
                     }
                 }
             }
