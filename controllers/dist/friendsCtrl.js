@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getSharedRoomId = exports.deleteFriend = exports.getFriends = exports.addFriend = void 0;
+exports.getFriendByRoomId = exports.getSharedRoomId = exports.deleteFriend = exports.getFriends = exports.addFriend = void 0;
 var userModel_1 = require("../models/userModel");
 var userFriends_1 = require("../models/userFriends");
 var uuid_1 = require("uuid");
@@ -182,3 +182,31 @@ function getSharedRoomId(req, res) {
     });
 }
 exports.getSharedRoomId = getSharedRoomId;
+function getFriendByRoomId(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var _a, userDB, roomId, friendDB, friend, error_5;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _b.trys.push([0, 2, , 3]);
+                    _a = req.body, userDB = _a.userDB, roomId = _a.roomId;
+                    if (!userDB || !roomId)
+                        throw new Error("Couldn't reiceve userDB or roomId from req.body");
+                    return [4 /*yield*/, userFriends_1["default"].findOne({ 'user.username': userDB.username, 'sharedRoomId': roomId })];
+                case 1:
+                    friendDB = _b.sent();
+                    if (!friendDB)
+                        throw new Error("Couldn't find user with username: " + userDB.username + " and share room id  of: " + roomId + ".");
+                    friend = friendDB.friend;
+                    res.send({ friend: friend });
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_5 = _b.sent();
+                    res.send({ error: error_5.message });
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.getFriendByRoomId = getFriendByRoomId;

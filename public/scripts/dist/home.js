@@ -66,6 +66,7 @@ function handleLoad() {
                 handleGetUser();
                 getAllFriends();
                 renderUserSettings();
+                getUserFriend();
             }
             catch (error) {
                 console.error(error);

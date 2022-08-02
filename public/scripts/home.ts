@@ -29,6 +29,7 @@ async function handleLoad() {
         handleGetUser();
         getAllFriends();
         renderUserSettings();
+        getUserFriend();
     } catch (error) {
         console.error(error);
     }
@@ -120,7 +121,7 @@ async function handleChatFriend(friendUsername: string) {
         if (!data) throw new Error ("Couldn't recieve data from axios POST: '/friends/get-sharedRoomId' ");
         const { sharedRoomId, error } = data;
         if(error) throw error;
-        
+
         window.location.href = `./chat.html?roomId=${sharedRoomId}`;
     } catch (error) {
         console.error(error);
@@ -145,6 +146,7 @@ async function handleDeleteFriend(friendUsername: string) {
         console.error(error);
     }
 }
+
 
 
 
