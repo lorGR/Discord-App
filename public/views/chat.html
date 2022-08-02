@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord - Register</title>
+    <link rel="stylesheet" href="../style/dist/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+        integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body onload="handleLoad()">
+    <div class="container">
+        <div class="app">
+            <header>
+                <nav>
+                    <div class="nav__home">
+                        <img onclick="handleHomePage()" src="../assets/images/discord-logo.png" alt="logo">
+                    </div>
+                    <div class="nav__groups">
+                        <ul>
+                            <li>
+                                <img src="../assets/images/discord_group_icon.png" alt="logo">
+                            </li>
+                            <li>
+                                <img src="../assets/images/discord_group_icon_2.png" alt="logo">
+                            </li>
+                            <li>
+                                <img src="../assets/images/discord_group_icon_3.jpeg" alt="logo">
+                            </li>
+                            <li>
+                                <img src="../assets/images/discord_group_icon_4.jpeg" alt="logo">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav__add-group">
+                        <img src="../assets/svgs/plus-svgrepo-com (1).svg" alt="plus icon">
+                    </div>
+                </nav>
+            </header>
+            <section class="friends-list">
+                <div class="friends-list__title">
+                    <img src="../assets/svgs/myspace-logo-svgrepo-com.svg" alt="friends icon">
+                    <h3>Friends List</h3>
+                </div>
+                <div class="friends-list__friends">
+                    <div id="friendListContainer" class="friends-list__friends__list">
+                        <p>No friends yet</p>
+                    </div>
+                    <div class="friends-list__friends__add">
+                        <button onclick="handleAddFriendPage()">Add new friend</button>
+                    </div>
+                </div>
+                <div class="friends-list__user">
+                    <div class="friends-list__user__info">
+                        <img src="../assets/svgs/user-profile-svgrepo-com.svg" alt="profile picture">
+                        <h3 id="usernameBox">Username</h3>
+                    </div>
+                    <div class="friends-list__user__settings">
+                        <img onclick="handleSettingPage()" src="../assets/svgs/setting-svgrepo-com.svg"
+                            alt="Setting Icon">
+                    </div>
+                </div>
+            </section>
+            <section class="main-app">
+                
+            </section>
+        </div>
+    </div>
+    <script src="../scripts/dist/index.js"></script>
+    <script src="../scripts/dist/home.js"></script>
+    <script src="../scripts/dist/add-friend.js"></script>
+</body>
+
+</html>
