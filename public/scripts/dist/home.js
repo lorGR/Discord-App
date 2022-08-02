@@ -177,7 +177,7 @@ function renderFriends(userFriendArray) {
 }
 function handleChatFriend(friendUsername) {
     return __awaiter(this, void 0, void 0, function () {
-        var userDB, data, error_4;
+        var userDB, data, sharedRoomId, error, error_4;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -192,7 +192,10 @@ function handleChatFriend(friendUsername) {
                     data = (_a.sent()).data;
                     if (!data)
                         throw new Error("Couldn't recieve data from axios POST: '/friends/get-sharedRoomId' ");
-                    console.log(data);
+                    sharedRoomId = data.sharedRoomId, error = data.error;
+                    if (error)
+                        throw error;
+                    window.location.href = "./chat.html?roomId=" + sharedRoomId;
                     return [3 /*break*/, 4];
                 case 3:
                     error_4 = _a.sent();

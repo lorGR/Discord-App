@@ -118,8 +118,10 @@ async function handleChatFriend(friendUsername: string) {
         //@ts-ignore
         const { data } = await axios.post('/friends/get-sharedRoomId', {friendUsername, userDB});
         if (!data) throw new Error ("Couldn't recieve data from axios POST: '/friends/get-sharedRoomId' ");
-        console.log(data);
-
+        const { sharedRoomId, error } = data;
+        if(error) throw error;
+        
+        window.location.href = `./chat.html?roomId=${sharedRoomId}`;
     } catch (error) {
         console.error(error);
     }
