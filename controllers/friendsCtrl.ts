@@ -74,3 +74,19 @@ export async function deleteFriend (req: express.Request, res: express.Response)
         res.send ({ error: error.message });
     }
 }
+
+export async function getSharedRoomId (req: express.Request, res:express.Response) {
+    try {
+        const { friendUsername, userDB } = req.body;
+        if (!friendUsername || !userDB) throw new Error("Couldn't reiceve friendUsername or userDB wasn't found in req.body");
+
+        const userFriendDB = await UserFriendModel.findOne({ 'friend.username': friendUsername, 'user.username': userDB.username });
+        if(!userFriendDB) throw new Error(`Couldn't find user with username ${userDB.usernmae}, and a friend with username: ${friendUsername}`);
+          
+        const { sharedRoomId } = userFriendDB;
+
+        res.send({ sharedRoomId });
+    } catch (error) {
+        res.send({ error: error.message });
+    }
+}

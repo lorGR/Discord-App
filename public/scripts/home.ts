@@ -94,7 +94,7 @@ function renderFriends(userFriendArray) {
         userFriendArray.forEach(userFriend => {
             html += `
                 <div class="friend">
-                    <div onclick="handleChatFriend('${userFriend.friend._id}')" class="right">
+                    <div onclick="handleChatFriend('${userFriend.friend.username}')" class="right">
                         <img src="../assets/svgs/user-profile-svgrepo-com.svg">
                         <p>${userFriend.friend.username}</p>
                     </div>
@@ -110,12 +110,16 @@ function renderFriends(userFriendArray) {
     }
 }
 
-async function handleChatFriend(userId: string) {
+async function handleChatFriend(friendUsername: string) {
     try {
         const userDB = await handleGetUser();
         if (!userDB) throw new Error("Couldn't get user from data base");
 
-        window.location.href = `./chat.html?userId=${userId}`;
+        //@ts-ignore
+        const { data } = await axios.post('/friends/get-sharedRoomId', {friendUsername, userDB});
+        if (!data) throw new Error ("Couldn't recieve data from axios POST: '/friends/get-sharedRoomId' ");
+        console.log(data);
+
     } catch (error) {
         console.error(error);
     }
@@ -127,7 +131,7 @@ async function handleDeleteFriend(friendUsername: string) {
         const { username } = userDB;
         console.log('Clicked trash icon');
         //@ts-ignore
-        const { data } = await axios.delete("/friends/delete-friend", {data: { friendUsername, username }});
+        const { data } = await axios.delete("/friends/delete-friend", { data: { friendUsername, username } });
         if (!data) throw new Error("Coulnd't recieve data from axios DELETE: '/users/delete-friend' ");
         const { succses, error } = data;
         if (error) throw error;

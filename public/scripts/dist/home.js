@@ -167,7 +167,7 @@ function renderFriends(userFriendArray) {
         var html_1 = '';
         console.log(userFriendArray);
         userFriendArray.forEach(function (userFriend) {
-            html_1 += "\n                <div class=\"friend\">\n                    <div onclick=\"handleChatFriend('" + userFriend.friend._id + "')\" class=\"right\">\n                        <img src=\"../assets/svgs/user-profile-svgrepo-com.svg\">\n                        <p>" + userFriend.friend.username + "</p>\n                    </div>\n                    <div onclick=\"handleDeleteFriend('" + userFriend.friend.username + "')\" class=\"left\">\n                        <img src=\"../assets/svgs/trash-svgrepo-com.svg\">\n                    </div>\n                </div>\n            ";
+            html_1 += "\n                <div class=\"friend\">\n                    <div onclick=\"handleChatFriend('" + userFriend.friend.username + "')\" class=\"right\">\n                        <img src=\"../assets/svgs/user-profile-svgrepo-com.svg\">\n                        <p>" + userFriend.friend.username + "</p>\n                    </div>\n                    <div onclick=\"handleDeleteFriend('" + userFriend.friend.username + "')\" class=\"left\">\n                        <img src=\"../assets/svgs/trash-svgrepo-com.svg\">\n                    </div>\n                </div>\n            ";
         });
         friendListContainer.innerHTML = html_1;
     }
@@ -175,25 +175,30 @@ function renderFriends(userFriendArray) {
         console.error(error);
     }
 }
-function handleChatFriend(userId) {
+function handleChatFriend(friendUsername) {
     return __awaiter(this, void 0, void 0, function () {
-        var userDB, error_4;
+        var userDB, data, error_4;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
+                    _a.trys.push([0, 3, , 4]);
                     return [4 /*yield*/, handleGetUser()];
                 case 1:
                     userDB = _a.sent();
                     if (!userDB)
                         throw new Error("Couldn't get user from data base");
-                    window.location.href = "./chat.html?userId=" + userId;
-                    return [3 /*break*/, 3];
+                    return [4 /*yield*/, axios.post('/friends/get-sharedRoomId', { friendUsername: friendUsername, userDB: userDB })];
                 case 2:
+                    data = (_a.sent()).data;
+                    if (!data)
+                        throw new Error("Couldn't recieve data from axios POST: '/friends/get-sharedRoomId' ");
+                    console.log(data);
+                    return [3 /*break*/, 4];
+                case 3:
                     error_4 = _a.sent();
                     console.error(error_4);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     });
