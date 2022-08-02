@@ -1,10 +1,6 @@
 //@ts-ignore
 var socket = io();
 var number = 4;
-socket.on("connect", function () {
-    console.log(socket.id);
-    socket.emit("msg", (number));
-});
 function getRoomIdByParams() {
     try {
         var queryString = window.location.search;
@@ -16,3 +12,22 @@ function getRoomIdByParams() {
         console.error(error);
     }
 }
+socket.on("connect", function () {
+    var roomId = getRoomIdByParams();
+    console.log(socket.id);
+    socket.emit('checkRoomId', roomId);
+});
+function handleSendMessage(event) {
+    try {
+        event.preventDefault();
+        var roomId = getRoomIdByParams();
+        var msg = event.target.msg.value;
+        socket.emit('sendMsg', roomId, msg);
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+socket.on('sendMessageToClient', function (msg) {
+    console.log(msg);
+});

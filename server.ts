@@ -25,12 +25,23 @@ if(mongodb_uri) {
 io.on("connection", async (socket) => {
     const sockets = await io.fetchSockets();
     sockets.forEach((socket) => {
-        console.log(socket.id);
+
     });
-    socket.on("msg", (msg) => {
-        console.log(msg);
+    socket.on("checkRoomId", (roomId) => {
+        socket.join(roomId); 
+        // socket.rooms.forEach( (room) => {
+        //     if (room === roomId) {
+        //         io.to(roomId).emit('alert');
+        //         console.log(`${socket.id} is connected`);
+        //     }
+        // });
+    })
+    socket.on('sendMsg', (roomId, msg)=> {
+        io.to(roomId).emit('sendMessageToClient', msg);
     })
 });
+
+
 
 app.use(express.json());
 app.use(cookieParser());

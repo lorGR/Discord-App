@@ -36,10 +36,18 @@ else {
 io.on("connection", (socket) => __awaiter(void 0, void 0, void 0, function* () {
     const sockets = yield io.fetchSockets();
     sockets.forEach((socket) => {
-        console.log(socket.id);
     });
-    socket.on("msg", (msg) => {
-        console.log(msg);
+    socket.on("checkRoomId", (roomId) => {
+        socket.join(roomId);
+        // socket.rooms.forEach( (room) => {
+        //     if (room === roomId) {
+        //         io.to(roomId).emit('alert');
+        //         console.log(`${socket.id} is connected`);
+        //     }
+        // });
+    });
+    socket.on('sendMsg', (roomId, msg) => {
+        io.to(roomId).emit('sendMessageToClient', msg);
     });
 }));
 app.use(express_1.default.json());
