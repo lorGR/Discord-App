@@ -77,7 +77,7 @@ function handleLoad() {
 }
 function handleGetUser() {
     return __awaiter(this, void 0, void 0, function () {
-        var data, userDB, error, username, greetUser, error_1;
+        var data, userDB, error, username, userImage, greetUser, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -92,6 +92,8 @@ function handleGetUser() {
                         throw error;
                     username = document.getElementById("usernameBox");
                     username.innerHTML = userDB.username;
+                    userImage = document.getElementById('userImage');
+                    userImage.src = userDB.src;
                     greetUser = document.getElementById("greetingUser");
                     if (greetUser)
                         greetUser.innerHTML = "Hello " + userDB.username;
