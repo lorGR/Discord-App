@@ -14,7 +14,6 @@ function getRoomIdByParams() {
 }
 socket.on("connect", function () {
     var roomId = getRoomIdByParams();
-    console.log(socket.id);
     socket.emit('checkRoomId', roomId);
 });
 function handleSendMessage(event) {
