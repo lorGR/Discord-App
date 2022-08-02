@@ -178,6 +178,7 @@ function renderFriends(userFriendArray) {
 function handleChatFriend(userId) {
     try {
         console.log("clicked on: " + userId);
+        window.location.href = "./chat.html";
     }
     catch (error) {
         console.error(error);
