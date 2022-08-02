@@ -25,3 +25,28 @@ function handleDisconnect(cookieName) {
         console.error(error);
     }
 }
+
+async function handleChangeImagePicture(event) {
+    try {
+        event.preventDefault();
+        const imageUrl = event.target.userImage.value;
+        const errorContainer = document.getElementById('errorsContainer') as HTMLSpanElement;
+        if(!isImage(imageUrl)) {
+            errorContainer.innerHTML = `URL isn't valid`;
+            errorContainer.style.color = 'red';
+        } 
+        else {
+            errorContainer.innerHTML = `Profile picture changed`;
+            errorContainer.style.color = 'green';
+        }
+        const userDB = await handleGetUser();
+        if (!userDB) throw new Error("Couldn't get user from handleGetUser -> Cookies");
+        // GO TO USER DB and change the SRC 
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function isImage(url) {
+    return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+}

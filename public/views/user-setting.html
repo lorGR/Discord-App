@@ -77,6 +77,7 @@
                             <h1>User Settings</h1>
                         </div>
                         <div class="user-information__content">
+                            <span id="errorsContainer"></span>
                             <div class="row">
                                 <label for="usenameSetting">Username:</label>
                                 <input id="usenameSetting" type="email" readonly="readonly">
@@ -91,6 +92,13 @@
                                 <label for="passwordSetting">Password:</label>
                                 <input id="passwordSetting" type="password" readonly="readonly">
                                 <img onclick="handleVisiblePassword()" id="passwordIcon" src="../assets/svgs/password-svgrepo-com.svg" alt="password-icon">
+                            </div>
+                            <div class="row">
+                                <form onsubmit="handleChangeImagePicture(event)">
+                                    <label for="userImage">Image url:</label>
+                                    <input type="text" id="userImage" name="userImage">
+                                    <button>Change</button>
+                                </form>
                             </div>
                         </div>
                     </div>

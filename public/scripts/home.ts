@@ -79,9 +79,12 @@ async function renderUserSettings() {
         const usernameInput = document.getElementById("usenameSetting") as HTMLInputElement;
         const emailInput = document.getElementById("emailSetting") as HTMLInputElement;
         const passwordInput = document.getElementById("passwordSetting") as HTMLInputElement;
+        const imageInput = document.getElementById("userImage") as HTMLInputElement;
+
         usernameInput.value = `${userDB.username}`;
         emailInput.value = `${userDB.email}`;
         passwordInput.value = `${userDB.password}`;
+        imageInput.value = `${userDB.src}`;
 
     } catch (error) {
         console.error(error);

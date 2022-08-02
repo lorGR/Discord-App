@@ -138,7 +138,7 @@ function getAllFriends() {
 }
 function renderUserSettings() {
     return __awaiter(this, void 0, void 0, function () {
-        var userDB, usernameInput, emailInput, passwordInput, error_3;
+        var userDB, usernameInput, emailInput, passwordInput, imageInput, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -150,9 +150,11 @@ function renderUserSettings() {
                     usernameInput = document.getElementById("usenameSetting");
                     emailInput = document.getElementById("emailSetting");
                     passwordInput = document.getElementById("passwordSetting");
+                    imageInput = document.getElementById("userImage");
                     usernameInput.value = "" + userDB.username;
                     emailInput.value = "" + userDB.email;
                     passwordInput.value = "" + userDB.password;
+                    imageInput.value = "" + userDB.src;
                     return [3 /*break*/, 3];
                 case 2:
                     error_3 = _a.sent();

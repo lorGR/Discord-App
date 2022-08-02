@@ -268,6 +268,31 @@ body .container .app .main-app .user-container .user-information__content .row #
 body .container .app .main-app .user-container .user-information__content .row #passwordIcon:hover {
   opacity: 0.6;
 }
+body .container .app .main-app .user-container .user-information__content .row form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+body .container .app .main-app .user-container .user-information__content .row form label {
+  width: fit-content;
+}
+body .container .app .main-app .user-container .user-information__content .row form input[type=text] {
+  width: 60%;
+}
+body .container .app .main-app .user-container .user-information__content .row form button {
+  color: #fff;
+  background-color: #474867;
+  border: 1px solid #fff;
+  border-radius: 1em;
+  padding: 0 1em;
+  transition: all 0.35s ease-in-out;
+  cursor: pointer;
+}
+body .container .app .main-app .user-container .user-information__content .row form button:hover {
+  color: #6666f8;
+  background-color: #fff;
+  border: 1px solid #6666f8;
+}
 body .container .app .main-app .user-container .box-conatiner {
   width: 50%;
 }

@@ -282,6 +282,31 @@ body {
                                 #passwordIcon:hover {
                                     opacity: .6;
                                 }
+                                form {
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    label{
+                                        width: fit-content;
+                                    }
+                                    input[type=text]{
+                                        width: 60%;
+                                    }
+                                    button {
+                                        color: #fff;
+                                        background-color: #474867;
+                                        border: 1px solid #fff;
+                                        border-radius: 1em;
+                                        padding: 0 1em ;
+                                        transition: all 0.35s ease-in-out;
+                                        cursor: pointer;
+                                    }
+                                    button:hover {
+                                        color: #6666f8;
+                                        background-color: #fff;
+                                        border: 1px solid #6666f8;
+                                    }
+                                }
                             }
                         }
                     }
