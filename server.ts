@@ -29,12 +29,6 @@ io.on("connection", async (socket) => {
     });
     socket.on("checkRoomId", (roomId) => {
         socket.join(roomId); 
-        // socket.rooms.forEach( (room) => {
-        //     if (room === roomId) {
-        //         io.to(roomId).emit('alert');
-        //         console.log(`${socket.id} is connected`);
-        //     }
-        // });
     })
     socket.on('sendMsg', (roomId, msg)=> {
         io.to(roomId).emit('sendMessageToClient', msg);
