@@ -19,14 +19,17 @@ socket.on("connect", function () {
 function handleSendMessage(event) {
     try {
         event.preventDefault();
+        var username = sessionStorage.getItem('name');
         var roomId = getRoomIdByParams();
-        var msg = event.target.msg.value;
+        var text = event.target.msg.value;
+        var msg = username + ": " + text;
         socket.emit('sendMsg', roomId, msg);
     }
     catch (error) {
         console.error(error);
     }
 }
+var chatContainer = document.getElementById('chatContainer');
 socket.on('sendMessageToClient', function (msg) {
-    console.log(msg);
+    var newMsgDiv = document.createElement('div');
 });

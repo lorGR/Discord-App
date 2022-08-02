@@ -134,6 +134,7 @@ function handleRegister(event) {
                     register = data.register, userDB = data.userDB, error = data.error;
                     if (error)
                         handleErrorsRegister(error);
+                    sessionStorage.setItem('name', userDB.username);
                     if (register)
                         window.location.href = "./home.html";
                     return [3 /*break*/, 3];

@@ -50,6 +50,7 @@ async function handleLogin(event) {
         console.log(data);
         const { login, userDB, error } = data;
         if (error) handleErrorsLogin(error);
+        sessionStorage.setItem('name', userDB.username);
         if (login) window.location.href = "./home.html";
     } catch (error) {
         console.error(error);

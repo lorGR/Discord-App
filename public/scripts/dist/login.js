@@ -95,6 +95,7 @@ function handleLogin(event) {
                     login = data.login, userDB = data.userDB, error = data.error;
                     if (error)
                         handleErrorsLogin(error);
+                    sessionStorage.setItem('name', userDB.username);
                     if (login)
                         window.location.href = "./home.html";
                     return [3 /*break*/, 3];

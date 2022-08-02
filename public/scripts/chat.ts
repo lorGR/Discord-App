@@ -22,14 +22,19 @@ socket.on("connect", () => {
 function handleSendMessage(event) {
     try {
         event.preventDefault();
+        const username = sessionStorage.getItem('name');
         const roomId = getRoomIdByParams();
-        const msg = event.target.msg.value;
+        const text = event.target.msg.value;
+        const msg = `${username}: ${text}`;
         socket.emit('sendMsg', roomId, msg);
     } catch (error) {
         console.error(error);
     }
 }
 
+const chatContainer = document.getElementById('chatContainer') as HTMLDivElement;
+
 socket.on('sendMessageToClient', (msg) => {
-    console.log(msg);
+    const newMsgDiv = document.createElement('div');
+    
 })

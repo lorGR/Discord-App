@@ -80,6 +80,7 @@ async function handleRegister(event) {
         console.log(data);
         const { register, userDB, error } = data;
         if (error) handleErrorsRegister(error);
+        sessionStorage.setItem('name', userDB.username);
         if (register) window.location.href = "./home.html";
     } catch (error) {
         console.error(error);

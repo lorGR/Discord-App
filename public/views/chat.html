@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discord - Register</title>
-    <link rel="stylesheet" href="../style/dist/home.css">
+    <link rel="stylesheet" href="../style/dist/chat.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -70,10 +70,19 @@
                 </div>
             </section>
             <section class="main-app">
-                <form onsubmit="handleSendMessage(event)">
-                    <input type="text" name="msg" id="userMessage">
-                    <input type="submit" value="Send">
-                </form>
+                <div class="app-title">
+                    <img src="../assets/svgs/user-profile-svgrepo-com.svg" alt="user-profile">
+                    <h1 id="chatUser">Username</h1>
+                </div>
+                <div class="app-chat" id="chatContainer">
+                    
+                </div>
+                <div class="app-msg">
+                    <form onsubmit="handleSendMessage(event)">
+                        <input type="text" name="msg" id="userMessage">
+                        <input type="submit" value="Send">
+                    </form>
+                </div>
             </section>
         </div>
     </div>
