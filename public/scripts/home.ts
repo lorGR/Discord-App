@@ -47,8 +47,8 @@ async function handleGetUser() {
         const username = document.getElementById("usernameBox") as HTMLHeadingElement;
         username.innerHTML = userDB.username;
 
-        const userImage = document.getElementById('userImage') as HTMLImageElement;
-        userImage.src = userDB.src;
+        // const userImage = document.getElementById('userImage') as HTMLImageElement;
+        // userImage.src = userDB.src;
 
         const greetUser = document.getElementById("greetingUser") as HTMLHeadingElement;
         if (greetUser) greetUser.innerHTML = `Hello ${userDB.username}`;
