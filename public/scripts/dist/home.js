@@ -176,17 +176,31 @@ function renderFriends(userFriendArray) {
     }
 }
 function handleChatFriend(userId) {
-    try {
-        console.log("clicked on: " + userId);
-        window.location.href = "./chat.html";
-    }
-    catch (error) {
-        console.error(error);
-    }
+    return __awaiter(this, void 0, void 0, function () {
+        var userDB, error_4;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, handleGetUser()];
+                case 1:
+                    userDB = _a.sent();
+                    if (!userDB)
+                        throw new Error("Couldn't get user from data base");
+                    window.location.href = "./chat.html?userId=" + userId;
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_4 = _a.sent();
+                    console.error(error_4);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
 }
 function handleDeleteFriend(friendUsername) {
     return __awaiter(this, void 0, void 0, function () {
-        var userDB, username, data, succses, error, error_4;
+        var userDB, username, data, succses, error, error_5;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -209,8 +223,8 @@ function handleDeleteFriend(friendUsername) {
                     }
                     return [3 /*break*/, 4];
                 case 3:
-                    error_4 = _a.sent();
-                    console.error(error_4);
+                    error_5 = _a.sent();
+                    console.error(error_5);
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];
             }

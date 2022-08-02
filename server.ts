@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser';
 
 const app : express.Application = express();
 const server = http.createServer(app);
-const io = new Server (server)
+const io = new Server (server);
 
 dotenv.config();
 const port : string = process.env.PORT;
@@ -22,6 +22,16 @@ if(mongodb_uri) {
     console.log("Couldn't find mongodb_uri");
 }
 
+io.on("connection", async (socket) => {
+    const sockets = await io.fetchSockets();
+    sockets.forEach((socket) => {
+        console.log(socket.id);
+    });
+    socket.on("msg", (msg) => {
+        console.log(msg);
+    })
+});
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static("public"));
@@ -31,6 +41,7 @@ import userRoutes from './routes/userRoutes';
 app.use("/users", userRoutes);
 
 import friendRoutes from './routes/friendRoutes';
+import { string } from "joi";
 app.use("/friends", friendRoutes);
 
 server.listen(port, () => {

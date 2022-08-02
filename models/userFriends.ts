@@ -4,12 +4,16 @@ export const UserFriendSchema = new mongoose.Schema({
     user: {
         // Create new Schema instead of Object ,a simple Schema of UserModel
         type: Object,
-        required: true
+        required: true,
     },
     friend: {
         // Create new Schema instead of Object ,a simple Schema of UserModel
         type : Object,
-        required: true
+        required: true,
+    },
+    sharedRoomId: {
+        type: String,
+        required: true,
     }
 });
 

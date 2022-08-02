@@ -12,6 +12,10 @@ exports.UserFriendSchema = new mongoose_1["default"].Schema({
         // Create new Schema instead of Object ,a simple Schema of UserModel
         type: Object,
         required: true
+    },
+    sharedRoomId: {
+        type: String,
+        required: true
     }
 });
 var UserFriendModel = mongoose_1["default"].model('UserFriend', exports.UserFriendSchema);

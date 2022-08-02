@@ -39,9 +39,10 @@ exports.__esModule = true;
 exports.deleteFriend = exports.getFriends = exports.addFriend = void 0;
 var userModel_1 = require("../models/userModel");
 var userFriends_1 = require("../models/userFriends");
+var uuid_1 = require("uuid");
 function addFriend(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, friendUsername, userDB, _b, friendDB, existFriend, _c, friendUser, userFriend, _d, friendUserDB, userFriendDB, error_1;
+        var _a, friendUsername, userDB, _b, friendDB, existFriend, sharedRoomId, _c, friendUser, userFriend, _d, friendUserDB, userFriendDB, error_1;
         return __generator(this, function (_e) {
             switch (_e.label) {
                 case 0:
@@ -61,9 +62,10 @@ function addFriend(req, res) {
                     if (!friendDB)
                         throw new Error("Couldn't find user with username: " + friendUsername);
                     console.log(friendDB);
+                    sharedRoomId = uuid_1.v4();
                     return [4 /*yield*/, Promise.all([
-                            new userFriends_1["default"]({ user: userDB, friend: friendDB }),
-                            new userFriends_1["default"]({ user: friendDB, friend: userDB })
+                            new userFriends_1["default"]({ user: userDB, friend: friendDB, sharedRoomId: sharedRoomId }),
+                            new userFriends_1["default"]({ user: friendDB, friend: userDB, sharedRoomId: sharedRoomId })
                         ])];
                 case 2:
                     _c = _e.sent(), friendUser = _c[0], userFriend = _c[1];

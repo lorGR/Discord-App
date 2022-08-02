@@ -110,10 +110,12 @@ function renderFriends(userFriendArray) {
     }
 }
 
-function handleChatFriend(userId: string) {
+async function handleChatFriend(userId: string) {
     try {
-        console.log(`clicked on: ${userId}`);
-        window.location.href = "./chat.html";
+        const userDB = await handleGetUser();
+        if (!userDB) throw new Error("Couldn't get user from data base");
+
+        window.location.href = `./chat.html?userId=${userId}`;
     } catch (error) {
         console.error(error);
     }
@@ -137,5 +139,6 @@ async function handleDeleteFriend(friendUsername: string) {
         console.error(error);
     }
 }
+
 
 

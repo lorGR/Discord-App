@@ -1,6 +1,7 @@
 import express from 'express'
 import UserModel from '../models/userModel'
 import UserFriendModel from '../models/userFriends'
+import { v4 as uuidv4 } from 'uuid';
 
 export async function addFriend(req: express.Request, res: express.Response) {
     try {
@@ -17,9 +18,11 @@ export async function addFriend(req: express.Request, res: express.Response) {
             if (!friendDB) throw new Error(`Couldn't find user with username: ${friendUsername}`);
             console.log(friendDB);
 
+            const sharedRoomId = uuidv4();
+
             const [friendUser, userFriend] = await Promise.all([
-                new UserFriendModel({ user: userDB, friend: friendDB }),
-                new UserFriendModel({ user: friendDB, friend: userDB })
+                new UserFriendModel({ user: userDB, friend: friendDB, sharedRoomId}),
+                new UserFriendModel({ user: friendDB, friend: userDB, sharedRoomId})
             ]);
 
             if (!friendUser) throw new Error("Couldn't create friend user");
