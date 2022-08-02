@@ -45,8 +45,8 @@ export async function getFriends(req: express.Request, res: express.Response) {
         const { userDB } = req.body;
         if (!userDB) throw new Error("Couldn't get userDB from req.body");
 
-        const userFriendsDB = await UserFriendModel.find({ 'user._id': userDB._id });
-        if (!userFriendsDB) throw new Error(`This user doesn't have friends :(`);
+        const userFriendsDB = await UserFriendModel.find({ 'user.username': userDB.username });
+        if (userFriendsDB.length === 0) throw new Error(`This user doesn't have friends :(`);
 
         res.send({ userFriendsDB });
     } catch (error) {

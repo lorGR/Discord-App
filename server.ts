@@ -22,17 +22,6 @@ if(mongodb_uri) {
     console.log("Couldn't find mongodb_uri");
 }
 
-let counter : number = 1;
-
-io.on("connection", (socket) => {
-    console.log(`user_${counter} connected`);
-    counter++;
-    socket.on("disconnect", () => {
-        counter--;
-        console.log(`user_${counter} disconnected`);
-    });
-})
-
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static("public"));

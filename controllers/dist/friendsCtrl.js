@@ -101,10 +101,10 @@ function getFriends(req, res) {
                     userDB = req.body.userDB;
                     if (!userDB)
                         throw new Error("Couldn't get userDB from req.body");
-                    return [4 /*yield*/, userFriends_1["default"].find({ 'user._id': userDB._id })];
+                    return [4 /*yield*/, userFriends_1["default"].find({ 'user.username': userDB.username })];
                 case 1:
                     userFriendsDB = _a.sent();
-                    if (!userFriendsDB)
+                    if (userFriendsDB.length === 0)
                         throw new Error("This user doesn't have friends :(");
                     res.send({ userFriendsDB: userFriendsDB });
                     return [3 /*break*/, 3];
