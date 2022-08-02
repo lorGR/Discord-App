@@ -1,6 +1,6 @@
 const errorContainerRegister = document.getElementById("errorContainer");
 
-function handleLoginPage() {
+function handleLoginPage(): void {
     try {
         window.location.href = "./login.html";
     } catch (error) {
@@ -8,7 +8,7 @@ function handleLoginPage() {
     }
 }
 
-function handleVisible() {
+function handleVisible(): void {
     try {
         const input = document.getElementById("registerPassword") as HTMLInputElement;
         const icon = document.getElementById("passwordIcon") as HTMLImageElement;
@@ -24,7 +24,7 @@ function handleVisible() {
     }
 }
 
-function handleVisibleReIcon() {
+function handleVisibleReIcon(): void {
     try {
         const input = document.getElementById("registerRePassword") as HTMLInputElement;
         const icon = document.getElementById("rePasswordIcon") as HTMLImageElement;
