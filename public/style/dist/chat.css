@@ -209,7 +209,6 @@ body .container .app .main-app {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 2px solid green;
 }
 body .container .app .main-app .app-title {
   width: 100%;
@@ -217,21 +216,29 @@ body .container .app .main-app .app-title {
   justify-content: center;
   gap: 1em;
   color: #fff;
-  border: 2px solid yellow;
+  border-bottom: 1px solid #6666f8;
 }
 body .container .app .main-app .app-title img {
   width: 2.5em;
 }
 body .container .app .main-app .app-chat {
+  color: #fff;
   display: flex;
+  height: 31.625rem;
+  padding: 1em 2em;
+  overflow-y: scroll;
   flex-direction: column;
   gap: 0.5em;
   justify-content: flex-start;
   align-items: flex-start;
+  scrollbar-width: none;
+}
+body .container .app .main-app .app-chat::-webkit-scrollbar {
+  display: none;
 }
 body .container .app .main-app .app-msg {
   padding: 1em 2em;
-  border: 2px solid pink;
+  border-top: 1px solid #6666f8;
 }
 body .container .app .main-app .app-msg form {
   display: flex;
@@ -245,7 +252,7 @@ body .container .app .main-app .app-msg form input[type=text] {
   color: #fff;
   width: 100%;
   border: none;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid white;
   background-color: #2c3248;
 }
 body .container .app .main-app .app-msg form input[type=text]:focus {

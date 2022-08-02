@@ -96,6 +96,7 @@ function handleLogin(event) {
                     if (error)
                         handleErrorsLogin(error);
                     sessionStorage.setItem('name', userDB.username);
+                    sessionStorage.setItem('userSrc', userDB.src);
                     if (login)
                         window.location.href = "./home.html";
                     return [3 /*break*/, 3];

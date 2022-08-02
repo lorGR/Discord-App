@@ -26,8 +26,8 @@ io.on("connection", async (socket) => {
     socket.on("checkRoomId", (roomId) => {
         socket.join(roomId); 
     })
-    socket.on('sendMsg', (roomId, msg)=> {
-        io.to(roomId).emit('sendMessageToClient', msg);
+    socket.on('sendMsg', (roomId, msg, username, userImg)=> {
+        io.to(roomId).emit('sendMessageToClient', msg, username, userImg);
     })
 });
 

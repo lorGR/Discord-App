@@ -221,30 +221,36 @@ body {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                border: 2px solid green;
                 .app-title {
                     width: 100%;
                     display: flex;
                     justify-content: center;
                     gap: 1em;
                     color: #fff;
-                    border: 2px solid yellow;
+                    border-bottom: 1px solid #6666f8;
                     img {
                         width: 2.5em;
                     }
                 }
                 .app-chat {
+                    color: #fff;
                     display: flex;
+                    height: 31.625rem;
+                    padding: 1em 2em; 
+                    overflow-y: scroll;
                     flex-direction: column;
                     gap: .5em;
                     justify-content: flex-start;
                     align-items: flex-start;
+                    scrollbar-width: none;
+                }
+                .app-chat::-webkit-scrollbar{
+                    display: none;
                 }
                 .app-msg {
                     padding: 1em 2em; 
-                    border: 2px solid pink;
+                    border-top: 1px solid #6666f8;
                     form {
-                        // border: 2px solid orange;
                         display: flex;
                         justify-content: space-between;
                         gap: 1em;
@@ -255,7 +261,7 @@ body {
                             color: #fff;
                             width: 100%;
                             border: none;
-                            border-bottom: 2px solid #fff;
+                            border-bottom: 2px solid white;
                             background-color: #2c3248;
                         }
                         input[type=text]:focus {

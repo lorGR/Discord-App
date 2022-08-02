@@ -37,8 +37,8 @@ io.on("connection", (socket) => __awaiter(void 0, void 0, void 0, function* () {
     socket.on("checkRoomId", (roomId) => {
         socket.join(roomId);
     });
-    socket.on('sendMsg', (roomId, msg) => {
-        io.to(roomId).emit('sendMessageToClient', msg);
+    socket.on('sendMsg', (roomId, msg, username, userImg) => {
+        io.to(roomId).emit('sendMessageToClient', msg, username, userImg);
     });
 }));
 app.use(express_1.default.json());

@@ -57,10 +57,10 @@ function handleSendMessage(event) {
         event.preventDefault();
         var userInput = document.getElementById('userMessage');
         var username = sessionStorage.getItem('name');
+        var userImg = sessionStorage.getItem('userSrc');
         var roomId = getRoomIdByParams();
         var text = event.target.msg.value;
-        var msg = username + ": " + text;
-        socket.emit('sendMsg', roomId, msg);
+        socket.emit('sendMsg', roomId, text, username, userImg);
         userInput.value = '';
     }
     catch (error) {
@@ -68,8 +68,11 @@ function handleSendMessage(event) {
     }
 }
 var chatContainer = document.getElementById('chatContainer');
-socket.on('sendMessageToClient', function (msg) {
+socket.on('sendMessageToClient', function (msg, username, userImg) {
     var newMsgDiv = document.createElement('div');
+    var userMessage = document.createElement('p');
+    var userImage = document.createElement('img');
+    userImage.src = "" + userImage;
     newMsgDiv.innerHTML = msg;
     chatContainer.append(newMsgDiv);
 });

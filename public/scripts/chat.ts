@@ -24,10 +24,10 @@ function handleSendMessage(event) {
         event.preventDefault();
         const userInput = document.getElementById('userMessage') as HTMLInputElement;
         const username = sessionStorage.getItem('name');
+        const userImg = sessionStorage.getItem('userSrc');
         const roomId = getRoomIdByParams();
         const text = event.target.msg.value;
-        const msg = `${username}: ${text}`;
-        socket.emit('sendMsg', roomId, msg);
+        socket.emit('sendMsg', roomId, text, username, userImg);
         userInput.value = '';
     } catch (error) {
         console.error(error);
@@ -36,8 +36,14 @@ function handleSendMessage(event) {
 
 const chatContainer = document.getElementById('chatContainer') as HTMLDivElement;
 
-socket.on('sendMessageToClient', (msg) => {
+socket.on('sendMessageToClient', (msg, username, userImg) => {
     const newMsgDiv = document.createElement('div');
+    const userMessage = document.createElement('p');
+    const userImage = document.createElement('img');
+
+    
+    userImage.src = `${userImage}`;
+    
     newMsgDiv.innerHTML = msg;
     chatContainer.append(newMsgDiv);
 })
@@ -70,7 +76,6 @@ function renderFriend(friend) {
 
         friendImg.src = friend.src;
         friendUsername.innerText = friend.username;
-
     } catch (error) {
         console.error(error);
     }
