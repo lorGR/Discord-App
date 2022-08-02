@@ -271,3 +271,17 @@ body .container .app .main-app .user-container .user-information__content .row #
 body .container .app .main-app .user-container .box-conatiner {
   width: 50%;
 }
+body .container .app .main-app .user-container #disconnect {
+  padding: 1em 1.5em;
+  color: #fff;
+  background-color: #474867;
+  border: 2px solid #474867;
+  border-radius: 1em;
+  cursor: pointer;
+  transition: all 0.35s ease-in-out;
+}
+body .container .app .main-app .user-container #disconnect:hover {
+  border: 2px solid #6666f8;
+  background-color: #fff;
+  color: #6666f8;
+}
