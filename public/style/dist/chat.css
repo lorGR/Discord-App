@@ -3,10 +3,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-img {
-  width: 100%;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -183,13 +179,12 @@ body .container .app .friends-list__user {
   justify-content: space-between;
   gap: 1em;
   border-top: 1px solid #6666f8;
+  width: 100%;
 }
 body .container .app .friends-list__user__info {
   display: flex;
   gap: 0.5em;
-}
-body .container .app .friends-list__user__info img {
-  width: 70%;
+  width: 100%;
 }
 body .container .app .friends-list__user__settings {
   display: flex;
@@ -232,6 +227,17 @@ body .container .app .main-app .app-chat {
   justify-content: flex-start;
   align-items: flex-start;
   scrollbar-width: none;
+}
+body .container .app .main-app .app-chat .chat-msg {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+body .container .app .main-app .app-chat .chat-msg img {
+  width: 3rem;
+}
+body .container .app .main-app .app-chat .chat-msg h3, body .container .app .main-app .app-chat .chat-msg p {
+  margin: 0;
 }
 body .container .app .main-app .app-chat::-webkit-scrollbar {
   display: none;

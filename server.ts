@@ -42,7 +42,6 @@ import userRoutes from './routes/userRoutes';
 app.use("/users", userRoutes);
 
 import friendRoutes from './routes/friendRoutes';
-import { string } from "joi";
 app.use("/friends", friendRoutes);
 
 server.listen(port, () => {

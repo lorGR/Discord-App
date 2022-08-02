@@ -70,10 +70,17 @@ function handleSendMessage(event) {
 var chatContainer = document.getElementById('chatContainer');
 socket.on('sendMessageToClient', function (msg, username, userImg) {
     var newMsgDiv = document.createElement('div');
+    var msgDivContent = document.createElement('div');
+    var userUsername = document.createElement('h3');
     var userMessage = document.createElement('p');
     var userImage = document.createElement('img');
-    userImage.src = "" + userImage;
-    newMsgDiv.innerHTML = msg;
+    newMsgDiv.classList.add('chat-msg');
+    msgDivContent.classList.add('chat-content');
+    userImage.src = "" + userImg;
+    userUsername.innerText = "" + username;
+    userMessage.innerText = "" + msg;
+    msgDivContent.append(userUsername, userMessage);
+    newMsgDiv.append(userImage, msgDivContent);
     chatContainer.append(newMsgDiv);
 });
 function getUserFriend() {

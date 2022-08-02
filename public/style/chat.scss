@@ -3,10 +3,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-img {
-    width: 100%;
-}
-
 body {
     margin: 0;
     padding: 0;
@@ -193,11 +189,13 @@ body {
                     justify-content: space-between;
                     gap: 1em;
                     border-top: 1px solid #6666f8;
+                    width: 100%;
                     &__info {
                         display: flex;
                         gap: .5em;
+                        width: 100%;
                         img {
-                            width: 70%;
+                            // width: 70%;
                         }
                     }
                     &__settings {
@@ -243,6 +241,17 @@ body {
                     justify-content: flex-start;
                     align-items: flex-start;
                     scrollbar-width: none;
+                    .chat-msg{
+                        display: flex;
+                        width: 100%;
+                        gap: 1rem;
+                        
+                        img{
+                            width: 3rem;
+                        }
+                        h3,p {
+                            margin: 0;                        }
+                    }
                 }
                 .app-chat::-webkit-scrollbar{
                     display: none;

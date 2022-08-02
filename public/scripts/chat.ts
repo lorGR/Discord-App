@@ -38,13 +38,20 @@ const chatContainer = document.getElementById('chatContainer') as HTMLDivElement
 
 socket.on('sendMessageToClient', (msg, username, userImg) => {
     const newMsgDiv = document.createElement('div');
+    const msgDivContent = document.createElement('div');
+    const userUsername = document.createElement('h3');
     const userMessage = document.createElement('p');
     const userImage = document.createElement('img');
+    
+    newMsgDiv.classList.add('chat-msg');
+    msgDivContent.classList.add('chat-content');
 
-    
-    userImage.src = `${userImage}`;
-    
-    newMsgDiv.innerHTML = msg;
+    userImage.src = `${userImg}`;
+    userUsername.innerText = `${username}`;
+    userMessage.innerText = `${msg}`;
+
+    msgDivContent.append(userUsername, userMessage);
+    newMsgDiv.append(userImage, msgDivContent);
     chatContainer.append(newMsgDiv);
 })
 
