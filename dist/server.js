@@ -27,8 +27,11 @@ const mongodb_uri = process.env.MONGODB_URI;
 if (mongodb_uri) {
     mongoose_1.default
         .connect(mongodb_uri)
-        .then(() => console.log("Connected to DB."))
-        .catch(() => console.log("Couldn't connect to DB."));
+        .then((res) => console.log("Connected to DB."))
+        .catch((err) => {
+        console.log("Couldn't connect to DB.");
+        console.log(err.message);
+    });
 }
 else {
     console.log("Couldn't find mongodb_uri");
